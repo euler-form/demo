@@ -37,7 +37,7 @@
     <!-- ACCESS FILTER
     <filter>
         <filter-name>accessFilter</filter-name>
-        <filter-class>net.eulerform.web.module.authentication.filter.AccessFilter</filter-class>
+        <filter-class>net.eulerform.web.module.oauth2.filter.AccessFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>accessFilter</filter-name>
@@ -47,7 +47,7 @@
     <!-- PRE LOGGING FILTER 
     <filter>
         <filter-name>preLoggingFilter</filter-name>
-        <filter-class>net.eulerform.web.module.authentication.filter.PreLoggingFilter</filter-class>
+        <filter-class>net.eulerform.web.module.oauth2.filter.PreLoggingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>preLoggingFilter</filter-name>
@@ -67,7 +67,7 @@
     <!-- POST LOGGING FILTER 
     <filter>
         <filter-name>postLoggingFilter</filter-name>
-        <filter-class>net.eulerform.web.module.authentication.filter.AuthenticateInfoFilter</filter-class>
+        <filter-class>net.eulerform.web.module.oauth2.filter.AuthenticateInfoFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>postLoggingFilter</filter-name>

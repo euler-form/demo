@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>net.eulerform</groupId>
-            <artifactId>net-eulerform-web-rs-server</artifactId>
+            <artifactId>net-eulerform-web-oauth2-server</artifactId>
         </dependency>
 
         <dependency>

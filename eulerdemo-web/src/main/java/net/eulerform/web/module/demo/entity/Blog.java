@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import net.eulerform.web.core.base.entity.IDLogicDelEntity;
+import net.eulerform.web.core.security.entity.IDLogicDelEntity;
 
 @SuppressWarnings("serial")
 @Entity

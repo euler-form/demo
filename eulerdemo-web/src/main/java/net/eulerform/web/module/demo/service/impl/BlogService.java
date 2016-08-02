@@ -2,7 +2,7 @@ package net.eulerform.web.module.demo.service.impl;
 
 import java.util.List;
 
-import net.eulerform.web.core.base.service.impl.BaseSecurityService;
+import net.eulerform.web.core.security.service.impl.BaseSecurityService;
 import net.eulerform.web.module.demo.dao.IBlogDao;
 import net.eulerform.web.module.demo.entity.Blog;
 import net.eulerform.web.module.demo.service.IBlogService;

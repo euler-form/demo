@@ -98,6 +98,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>lehang-web</finalName>
+        <finalName>lehang</finalName>
     </build>
 </project>

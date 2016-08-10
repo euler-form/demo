@@ -34,6 +34,8 @@
           属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。
           如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0-->
         <property name="maxStatements" value="${dataSource.maxStatements}" />
+        <!--maxStatementsPerConnection定义了连接池内单个连接所拥有的最大缓存statements数。Default: 0 -->
+        <property name="maxStatementsPerConnection" value="${dataSource.maxStatementsPerConnection}" />
         <!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
         <property name="idleConnectionTestPeriod" value="${dataSource.idleConnectionTestPeriod}" />
         <!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->

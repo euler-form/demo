@@ -27,18 +27,18 @@ body {
     margin-left:auto;
     margin-right:auto;
 }
-.dlg_line {
+.dlg-line {
     width: 100%;
     text-align:center;
     display:table-row;
     height: 30px;
 }
 
-.hidden_line{
+.hidden-line{
     display:none;
 }
 
-.dlg_label {
+.dlg-label {
     display:table-cell;
     text-align:left;
     width:auto;
@@ -47,7 +47,7 @@ body {
     vertical-align: middle;
 }
 
-.dlg_span{
+.dlg-span{
     display:table-cell;
     text-align:center;
     width:auto;

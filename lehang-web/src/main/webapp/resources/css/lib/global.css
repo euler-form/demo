@@ -29,7 +29,7 @@ body {
 }
 .dlg-line {
     width: 100%;
-    text-align:center;
+    text-align:left;
     display:table-row;
     height: 30px;
 }
@@ -49,7 +49,7 @@ body {
 
 .dlg-span{
     display:table-cell;
-    text-align:center;
+    text-align:left;
     width:auto;
     padding-left:6px;
     padding-right:6px;
@@ -58,7 +58,7 @@ body {
 
 .dlg-input{
     display:table-cell;
-    text-align:center;
+    text-align:left;
     width: 150px;
 }
 

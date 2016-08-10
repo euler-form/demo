@@ -19,13 +19,13 @@
                 <tr>
                     <td>${euler:i18n('user.username')}</td>
                     <td><input class="easyui-textbox search-input" id="query_username" name="query.username" /></td>
-                    <td>${euler:i18n('user.empName')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_empName" name="query.empName" /></td>
+                    <td>${euler:i18n('user.fullName')}</td>
+                    <td><input class="easyui-textbox search-input" id="query_fullName" name="query.fullName" /></td>
                     <td>${euler:i18n('user.enabled')}</td>
                     <td><input class="easyui-combobox search-input" id="query_enabled" name="query.enabled"
                             data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
                 </tr>
-                <%-- <tr>
+                <tr>
                     <td>${euler:i18n('user.accountNonExpired')}</td>
                     <td><input class="easyui-combobox search-input" id="query_accountNonExpired" name="query.accountNonExpired"
                             data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
@@ -35,7 +35,7 @@
                     <td>${euler:i18n('user.credentialsNonExpired')}</td>
                     <td><input class="easyui-combobox search-input" id="query_credentialsNonExpired" name="query.credentialsNonExpired"
                             data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
-                </tr> --%>
+                </tr>
             </table>
             <table class="search-btn-table">
                 <tr><td>
@@ -49,7 +49,9 @@
 
         <div id="toolbar">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="onAdd()">${euler:i18n('global.add')}</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" id="editBtn" iconCls="icon-ok" plain="true" onclick="onEnable()">${euler:i18n('global.enable')}</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="onEdit()">${euler:i18n('global.edit')}</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="onResetPasswd()">${euler:i18n('jsp.user.resetPassword')}</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="onEnable()">${euler:i18n('global.enable')}</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="onDisable()">${euler:i18n('global.disable')}</a>
         </div>
         <table id="dg" class="easyui-datagrid"
@@ -67,11 +69,11 @@
                 <tr>
                     <th data-options="field:'id',hidden:true">ID</th>
                     <th data-options="field:'username',align:'center',width:'120px'">${euler:i18n('user.username')}</th>
-                    <th data-options="field:'empName',align:'center',width:'120px'">${euler:i18n('user.empName')}</th>
-                    <th data-options="field:'enabled',align:'center',width:'60px',formatter:yesOrNoFormatter">${euler:i18n('user.enabled')}</th>
-                    <%-- <th data-options="field:'accountNonExpired',align:'center'">${euler:i18n('user.accountNonExpired')}</th>
-                    <th data-options="field:'accountNonLocked',align:'center'">${euler:i18n('user.accountNonLocked')}</th>
-                    <th data-options="field:'credentialsNonExpired',align:'center'">${euler:i18n('user.credentialsNonExpired')}</th> --%>
+                    <th data-options="field:'fullName',align:'center',width:'120px'">${euler:i18n('user.fullName')}</th>
+                    <th data-options="field:'enabled',align:'center',width:'100px',formatter:yesOrNoFormatter">${euler:i18n('user.enabled')}</th>
+                    <th data-options="field:'accountNonExpired',align:'center',width:'100px',formatter:yesOrNoFormatter">${euler:i18n('user.accountNonExpired')}</th>
+                    <th data-options="field:'accountNonLocked',align:'center',width:'100px',formatter:yesOrNoFormatter">${euler:i18n('user.accountNonLocked')}</th>
+                    <th data-options="field:'credentialsNonExpired',align:'center',width:'100px',formatter:yesOrNoFormatter">${euler:i18n('user.credentialsNonExpired')}</th>
                 </tr>
             </thead>
         </table>
@@ -87,11 +89,26 @@
             <form id="fm" class="dlg-form" method="post">
                 <input type="hidden" id="dlg_id" name="id">
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.username')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_username" name="username"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.empName')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_empName" name="empName"></span></div>
-                <div class="dlg-line hidden-line"><label class="dlg-label">${euler:i18n('user.enabled')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_enabled" name="enabled"></span></div>
-                <div class="dlg-line hidden-line"><label class="dlg-label">${euler:i18n('user.accountNonExpired')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonExpired" name="accountNonExpired"></span></div>
-                <div class="dlg-line hidden-line"><label class="dlg-label">${euler:i18n('user.accountNonLocked')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonLocked" name="accountNonLocked"></span></div>
-                <div class="dlg-line hidden-line"><label class="dlg-label">${euler:i18n('user.credentialsNonExpired')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_credentialsNonExpired" name="credentialsNonExpired"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.fullName')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_fullName" name="fullName"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.enabled')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_enabled" name="enabled"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.accountNonExpired')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonExpired" name="accountNonExpired"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.accountNonLocked')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonLocked" name="accountNonLocked"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('user.credentialsNonExpired')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_credentialsNonExpired" name="credentialsNonExpired"></span></div>
+            </form>
+        </div>
+        <div id="reset-passwd-dlg" class="easyui-dialog dlg-window" style="width:400px;"
+                data-options="
+                    zIndex:99999999,
+                    closed:true,
+                    iconCls:'icon-reload',
+                    resizable:false,
+                    modal:true,
+                    onClose:clearResetPasswdDlg,
+                    buttons:[{text:'${euler:i18n('global.reset')}', iconCls:'icon-ok', handler:onResetPasswdDlgSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onResetPasswdDlgCancel}]">
+            <form id="reset-passwd-fm" class="dlg-form" method="post">
+                <input type="hidden" id="reset-passwd-dlg-id" name="id">
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('global.newPassword')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true,type:'password'" id="reset-passwd-dlg-newpassword" name="newpassword"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('global.confirmPassword')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true,type:'password'" id="reset-passwd-dlg-confirmpassword" name="confirmpassword"></span></div>
             </form>
         </div>
     </div>
@@ -115,29 +132,6 @@
     <script src="${contextPath}/resources/scripts/lib/util.js"></script>
 
     <script>
-        function empSearchDlgCallback(data) {
-            var emp = {};
-            emp.username=data.workNo;
-            emp.empName=data.cnName;
-            emp.enabled=true;
-            emp.accountNonExpired=true;
-            emp.accountNonLocked=true;
-            emp.credentialsNonExpired=true;
-            $.ajax({
-                url:'saveUser',
-                type:'POST',
-                async:true,
-                data: emp,
-                error:function(XMLHttpRequest, textStatus, errorThrown) {
-                    $.messager.alert("${euler:i18n('global.error')}", XMLHttpRequest.responseText);
-                },
-                success:function(data, textStatus) {
-                    refreshDatagrid();
-                }
-            });
-            //$('#dlg_username').textbox('setValue', data.workNo);
-            //$('#dlg_empName').textbox('setValue', data.cnName);
-        }
 
         $(function(){
 
@@ -147,7 +141,7 @@
                 editable:false,
                 data:getDictData(yesOrNo, 'all')
             });
-            /* $('#query_accountNonExpired').combobox({
+            $('#query_accountNonExpired').combobox({
                 valueField:'key',
                 textField:'value',
                 editable:false,
@@ -164,9 +158,9 @@
                 textField:'value',
                 editable:false,
                 data:getDictData(yesOrNo, 'all')
-            }); */
+            });
 
-            /* $('#dlg_enabled').combobox({
+            $('#dlg_enabled').combobox({
                 valueField:'key',
                 textField:'value',
                 editable:false,
@@ -190,13 +184,6 @@
                 editable:false,
                 data:getDictData(yesOrNo)
             });
-
-            $('#dlg_username').searchbox({
-                searcher:function(value,name){
-                    openEmpSearchDlg();
-                },
-                prompt:"${euler:i18n('jsp.user.clickButtonToAddUser')}"
-            }); */
         });
 
         function refreshDatagrid(){
@@ -222,7 +209,7 @@
             $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.user.addUser')}");
         }
 
-        /* function onEdit() {
+        function onEdit() {
             var row = $('#dg').datagrid('getSelections');
 
             if(row == null || row.length < 1){
@@ -230,7 +217,7 @@
             } else if(row){
                 $('#dlg_id').val(row[0].id);
                 $('#dlg_username').textbox('setValue', row[0].username);
-                $('#dlg_empName').textbox('setValue', row[0].empName);
+                $('#dlg_fullName').textbox('setValue', row[0].fullName);
                 $('#dlg_enabled').combobox('select', row[0].enabled+"");
                 $('#dlg_accountNonExpired').combobox('select', row[0].accountNonExpired+"");
                 $('#dlg_accountNonLocked').combobox('select', row[0].accountNonLocked+"");
@@ -238,7 +225,7 @@
                 $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.user.editUser')}");
 
             }
-        } */
+        }
 
         function onSave() {
 
@@ -328,6 +315,57 @@
 
         function onClose(){
             $('#dlg').dialog('close');
+        }
+        
+        function onResetPasswd() {
+            var row = $('#dg').datagrid('getSelections');
+
+            if(row == null || row.length < 1){
+                $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRows')}");
+            } else if(row){
+                $('#reset-passwd-fm').form('clear');
+                $('#reset-passwd-fm').form('load', row[0]);
+                $('#reset-passwd-dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.user.resetPassword')}");
+            }            
+        }
+        
+        function onResetPasswdDlgSave() {
+            var newPassword = $('#reset-passwd-dlg-newpassword').textbox('getValue');
+            var confirmPassword = $('#reset-passwd-dlg-confirmpassword').textbox('getValue');
+            if(newPassword === confirmPassword) {
+                var id = $('#reset-passwd-dlg-id').val();
+                var data = {};
+                data.id = id;
+                data.password = newPassword;
+                $.ajax({
+                    url:'resetUserPassword',
+                    type:'POST',
+                    async:true,
+                    data: data,
+                    error:function(XMLHttpRequest, textStatus, errorThrown) {
+                        $.messager.alert("${euler:i18n('global.error')}", XMLHttpRequest.responseText);
+                    },
+                    success:function(data, textStatus) {
+                        clearResetPasswdDlg();
+                        onResetPasswdDlgClose();
+                    }
+                });
+            } else {
+                $.messager.alert("${euler:i18n('global.error')}", "${euler:i18n('global.confirmPasswordWrong')}");
+            }
+        }
+
+        function onResetPasswdDlgCancel() {
+            clearResetPasswdDlg();
+            onResetPasswdDlgClose();
+        }
+
+        function clearResetPasswdDlg(){
+            $('#reset-passwd-fm').form('clear');
+        }
+
+        function onResetPasswdDlgClose(){
+            $('#reset-passwd-dlg').dialog('close');
         }
 
         function onClickRow(rowIndex, rowData){

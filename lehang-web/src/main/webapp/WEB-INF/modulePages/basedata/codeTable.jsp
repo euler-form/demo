@@ -33,14 +33,14 @@
                     <td>${euler:i18n('codeTable.valueEnUs')}</td>
                     <td><input class="easyui-textbox search-input" id="query_valueEnUs" name="query.valueEnUs" /></td>
                 </tr>
-                <tr>
+                <%-- <tr>
                     <td>${euler:i18n('createPerson')}</td>
                     <td><input class="easyui-textbox search-input" id="query_createBy" name="query.createBy" /></td>
                     <td>${euler:i18n('lastModifyPerson')}</td>
                     <td><input class="easyui-textbox search-input" id="query_modifyBy" name="query.modifyBy" /></td>
                     <td>${euler:i18n('lastModifyDate')}</td>
                     <td><input class="easyui-datebox search-input" id="query_modifyDate" name="query.modifyDate" /></td>
-                </tr>
+                </tr> --%>
             </table>
             <table class="search-btn-table">
                 <tr><td>
@@ -72,17 +72,17 @@
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'id',hidden:true">ID</th>
-                    <th data-options="field:'name',align:'center'">${euler:i18n('codeTable.name')}</th>
-                    <th data-options="field:'codeType',align:'center',formatter:codeTypeFormatter">${euler:i18n('codeTable.codeType')}</th>
-                    <th data-options="field:'key',align:'center'">${euler:i18n('codeTable.key')}</th>
-                    <th data-options="field:'value',align:'center'">${euler:i18n('codeTable.value')}</th>
-                    <th data-options="field:'valueZhCn',align:'center'">${euler:i18n('codeTable.valueZhCn')}</th>
-                    <th data-options="field:'valueEnUs',align:'center'">${euler:i18n('codeTable.valueEnUs')}</th>
-                    <th data-options="field:'showOrder',align:'center'">${euler:i18n('codeTable.showOrder')}</th>
-                    <th data-options="field:'description',align:'center'">${euler:i18n('codeTable.description')}</th>
-                    <th data-options="field:'createByName',align:'center'">${euler:i18n('createPerson')}</th>
+                    <th data-options="field:'name',align:'center',width:'90px'">${euler:i18n('codeTable.name')}</th>
+                    <th data-options="field:'codeType',align:'center',width:'120px',formatter:codeTypeFormatter">${euler:i18n('codeTable.codeType')}</th>
+                    <th data-options="field:'key',align:'center',width:'60px'">${euler:i18n('codeTable.key')}</th>
+                    <th data-options="field:'value',align:'center',width:'160px'">${euler:i18n('codeTable.value')}</th>
+                    <th data-options="field:'valueZhCn',align:'center',width:'160px'">${euler:i18n('codeTable.valueZhCn')}</th>
+                    <th data-options="field:'valueEnUs',align:'center',width:'160px'">${euler:i18n('codeTable.valueEnUs')}</th>
+                    <th data-options="field:'showOrder',align:'center',width:'100px'">${euler:i18n('codeTable.showOrder')}</th>
+                    <th data-options="field:'description',align:'center',width:'160px'">${euler:i18n('codeTable.description')}</th>
+                    <%-- <th data-options="field:'createByName',align:'center'">${euler:i18n('createPerson')}</th>
                     <th data-options="field:'modifyByName',align:'center'">${euler:i18n('lastModifyPerson')}</th>
-                    <th data-options="field:'modifyDate',align:'center',formatter:unixDateFormatter">${euler:i18n('lastModifyDate')}</th>
+                    <th data-options="field:'modifyDate',align:'center',formatter:unixDateFormatter">${euler:i18n('lastModifyDate')}</th> --%>
                 </tr>
             </thead>
         </table>
@@ -108,11 +108,8 @@
             </form>
         </div>
     </div>
-    <script src="${contextPath}/resources/scripts/lib/easyui/jquery.min.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/easyui/jquery.easyui.min.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/easyui/easyui-lang-zh_CN.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/common-dict.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/util.js"></script>
+    
+    <%@ include file="/WEB-INF/commonPages/js.jsp"%>
 
     <script>
         $(function(){ 

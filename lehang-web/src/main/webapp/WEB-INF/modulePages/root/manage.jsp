@@ -15,9 +15,9 @@
 <body class="easyui-layout">
     <div id="header-zone" data-options="region:'north',split:false,collapsible:false">
         <div id="header">
-                        <span id="site-title"><a href="${contextPath}/">乐航</a></span>
+                        <span id="site-title"><a href="${contextPath}/"><span class="euler-formula"></span></a></span>
             <span id="user-info" style="position:absolute;right:3px;">
-                <span>${currentUser.empName}(${currentUser.username})</span>&nbsp;&nbsp;<span><a href="${contextPath}/logout">${euler:i18n('global.logout')}</a></span>
+                <span>${currentUser.fullName}(${currentUser.username})</span>&nbsp;&nbsp;<span><a href="${contextPath}/logout">${euler:i18n('global.logout')}</a></span>
             </span>
         </div>
     </div>

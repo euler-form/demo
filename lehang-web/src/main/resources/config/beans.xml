@@ -13,6 +13,11 @@
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
+
+    <bean id="collaboratorDao" class="com.lehang.web.module.lehang.dao.impl.CollaboratorDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
     <import resource="beans-database.xml"/>
     <import resource="beans-schedule.xml"/>
 </beans>

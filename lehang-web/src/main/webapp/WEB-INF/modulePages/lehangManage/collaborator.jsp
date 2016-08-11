@@ -8,6 +8,12 @@
     <%@ include file="/WEB-INF/commonPages/css.jsp"%>
 
     <title></title>
+    
+    <style>
+        .dlg-input{
+            width: 260px;
+        }
+    </style>
 
 </head>
 
@@ -17,12 +23,8 @@
         <form id="search-form">
             <table class="search-table">
                 <tr>
-                    <td>${euler:i18n('authority.name')}</td>
+                    <td>${euler:i18n('collaborator.name')}</td>
                     <td><input class="easyui-textbox search-input" id="query_name" name="query.name" /></td>
-                    <td>${euler:i18n('authority.authority')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_authority" name="query.authority" /></td>
-                    <td>${euler:i18n('authority.description')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description" /></td>
                 </tr>
             </table>
             <table class="search-btn-table">
@@ -43,7 +45,7 @@
         <table id="dg" class="easyui-datagrid" 
             data-options="
                 fit:true,
-                url:'findAuthorityByPage',
+                url:'findCollaboratorByPage',
                 toolbar:'#toolbar',
                 fitColumns:false,
                 rownumbers:true,
@@ -55,9 +57,9 @@
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'id',hidden:true">ID</th>
-                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('authority.name')}</th>
-                    <th data-options="field:'authority',align:'center',width:'200px'">${euler:i18n('authority.authority')}</th>
-                    <th data-options="field:'description',align:'center',width:'200px'">${euler:i18n('authority.description')}</th>
+                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('collaborator.name')}</th>
+                    <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('collaborator.logo')}</th>
+                    <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('collaborator.order')}</th>
                 </tr>
             </thead>
         </table>
@@ -70,11 +72,11 @@
                     modal:true,
                     onClose:clearDlg,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
-            <form id="fm" class="dlg-form" method="post">
+            <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.authority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_authority" name="authority"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.description')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="required:true,prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.order')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.order')}'" id="dlg_order" name="order"></span></div>
             </form>
         </div>        
     </div>
@@ -104,7 +106,7 @@
         
         function onAdd() {
             $('#fm').form('clear');
-            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.authority.addAuthority')}");
+            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.addCollaborator')}");
         }
         
         function onEdit() {
@@ -113,15 +115,16 @@
             if(row == null || row.length < 1){
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
+                $('#dlg_logo').filebox({required:false});
                 $('#fm').form('load', row[0]);
-                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.authority.editAuthority')}");
+                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.editCollaborator')}");
                 
             }
         }
         
         function onSave() {
             $('#fm').form('submit', {
-                url:'saveAuthority',
+                url:'saveCollaborator',
                 onSumit:function(){
                     return $(this).form('validate');
                 },
@@ -150,7 +153,7 @@
                             ids += row[i].id + ';';
                         }
                         $.ajax({
-                            url:'deleteAuthorities',
+                            url:'deleteCollaborators',
                             type:'POST',
                             async:true,
                             data: "ids=" + ids,

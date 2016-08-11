@@ -43,7 +43,7 @@
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSaveModuleDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancelModuleDlg}]">
             <form id="module-fm" class="dlg-form"  method="post">
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_module_name" name="name"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.requireAuthority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_module_requireAuthority" name="requireAuthority"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.requireAuthority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.uppercaseLettersOrUnderscore')}'" id="dlg_module_requireAuthority" name="requireAuthority"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.showOrder')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_module_showOrder" name="showOrder"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.description')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" id="dlg_module_description" name="description"></span></div>
             </form>
@@ -58,10 +58,11 @@
                     onClose:clearPageDlg,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSavePageDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancelPageDlg}]">
             <form id="page-fm" class="dlg-form"  method="post">
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_page_module_id" data-options="editable:false" name="moduleId"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_page_name" name="name"></span></div>
+                <input type="hidden" id="dlg_page_module_id" name="moduleId">
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('module.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true,disabled:true" id="dlg_page_module_name" name="moduleName"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true," id="dlg_page_name" name="name"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.url')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_page_url" name="url"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.requireAuthority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_page_requireAuthority" name="requireAuthority"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.requireAuthority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.uppercaseLettersOrUnderscore')}'" id="dlg_page_requireAuthority" name="requireAuthority"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.showOrder')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_page_showOrder" name="showOrder"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('page.description')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" id="dlg_page_description" name="description"></span></div>
             </form>
@@ -286,8 +287,8 @@
                 module = node;
             }
             $('#page-dlg').dialog('open');
-            $('#dlg_page_module_id').textbox('setValue', module.id);
-            $('#dlg_page_module_id').textbox('setText', module.text);
+            $('#dlg_page_module_name').textbox('setValue', module.text);
+            $('#dlg_page_module_id').val(module.id);
         }
         
         function onSavePageDlg(){

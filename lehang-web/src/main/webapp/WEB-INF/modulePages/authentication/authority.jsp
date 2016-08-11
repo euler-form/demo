@@ -73,7 +73,7 @@
             <form id="fm" class="dlg-form" method="post">
                 <input type="hidden" id="dlg_id" name="id">
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.authority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_authority" name="authority"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.authority')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.uppercaseLettersOrUnderscore')}'" id="dlg_authority" name="authority"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('authority.description')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
             </form>
         </div>        

@@ -113,3 +113,9 @@ function yesOrNoFormatter(value, row, index){
             return yesOrNo[i].value;
     }    
 }
+
+function imgFormatter(value, row, index) {
+    if(value == null || value == "")
+        return '-';
+    return '<img alt="Brand" style="margin-top:5px;" src="../resources/upload/'+value+'"  width="200px">'
+}

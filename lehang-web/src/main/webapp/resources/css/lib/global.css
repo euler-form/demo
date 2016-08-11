@@ -81,3 +81,8 @@ a {
 a:hover{
     text-decoration:underline;
 }
+
+.dg_img {
+    display: inline-block;
+    vertical-align: middle;    
+}

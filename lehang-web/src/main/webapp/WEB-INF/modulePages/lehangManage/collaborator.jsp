@@ -75,7 +75,7 @@
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <input type="hidden" id="dlg_id" name="id">
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.name')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="required:true,prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
+                <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
                 <div class="dlg-line"><label class="dlg-label">${euler:i18n('collaborator.order')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.order')}'" id="dlg_order" name="order"></span></div>
             </form>
         </div>        
@@ -115,7 +115,6 @@
             if(row == null || row.length < 1){
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
-                $('#dlg_logo').filebox({required:false});
                 $('#fm').form('load', row[0]);
                 $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.editCollaborator')}");
                 

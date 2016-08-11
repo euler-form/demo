@@ -17,7 +17,7 @@ public class Collaborator extends UUIDEntity<Collaborator> {
     @NotNull
     @Column(name="NAME",nullable=false)
     private String name;
-    @Column(name="LOGO_FILENAME",nullable=false)
+    @Column(name="LOGO_FILENAME")
     private String logoFileName;
     @Column(name="DISPLAY_ORDER",nullable=false)
     private Integer order;

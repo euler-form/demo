@@ -10,6 +10,6 @@
                                  http://www.springframework.org/schema/security/oauth2
                                  http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
     
-    <http security="none" pattern="/index.html" />
+    <http security="none" pattern="/robot.txt" />
 
 </beans:beans>

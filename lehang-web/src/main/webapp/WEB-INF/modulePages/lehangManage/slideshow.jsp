@@ -93,11 +93,12 @@
                     $.messager.alert("${euler:i18n('global.error')}", XMLHttpRequest.responseText);
                 },
                 success:function(data, textStatus) {
-                    $('#dlg_img-show1').attr('src', "${contextPath}/resources/upload/"+data.slideshows[0].imgFileName);  
+                    var upload = '${contextPath}/upload/';
+                    $('#dlg_img-show1').attr('src', upload+data.slideshows[0].imgFileName);  
                     $('#dlg_url1').textbox('setValue', data.slideshows[0].url);  
-                    $('#dlg_img-show2').attr('src', "${contextPath}/resources/upload/"+data.slideshows[1].imgFileName);  
+                    $('#dlg_img-show2').attr('src', upload+data.slideshows[1].imgFileName);  
                     $('#dlg_url2').textbox('setValue', data.slideshows[1].url);      
-                    $('#dlg_img-show3').attr('src', "${contextPath}/resources/upload/"+data.slideshows[2].imgFileName);  
+                    $('#dlg_img-show3').attr('src', upload+data.slideshows[2].imgFileName);  
                     $('#dlg_url3').textbox('setValue', data.slideshows[2].url);                                 
                 }
             });

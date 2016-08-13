@@ -117,5 +117,5 @@ function yesOrNoFormatter(value, row, index){
 function imgFormatter(value, row, index) {
     if(value == null || value == "")
         return '-';
-    return '<img alt="Brand" style="margin-top:5px;" src="../resources/upload/'+value+'"  width="200px">'
+    return '<img alt="Brand" style="margin-top:5px;" src="../upload/'+value+'"  width="200px">'
 }

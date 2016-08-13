@@ -60,7 +60,7 @@ public class SlideshowService extends BaseService implements ISlideshowService {
                     FileReader.deleteFile(new File(filePath));
                 }
                 
-                File savedFile = WebFileTool.saveMultipartFile(img, uploadPath);
+                File savedFile = WebFileTool.saveMultipartFile(img);
                 slideshow.setImgFileName(savedFile.getName());
             } catch (IllegalStateException | IOException | GlobalPropertyReadException e) {
                 throw new RuntimeException(e);

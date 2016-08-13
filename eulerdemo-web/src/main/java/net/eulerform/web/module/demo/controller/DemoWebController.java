@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import net.eulerform.common.FileReader;
+import net.eulerform.common.GlobalPropertyReadException;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.BaseController;
 import net.eulerform.web.core.util.WebFileTool;
@@ -32,9 +33,9 @@ public class DemoWebController extends BaseController {
 	private IBlogService blogService;
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(@RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IllegalStateException, IOException {
-		String uploadPath = this.getServletContext().getRealPath("upload");
-		File savedFile = WebFileTool.saveMultipartFile(file, uploadPath);
+	public String upload(@RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IllegalStateException, IOException, GlobalPropertyReadException {
+
+		File savedFile = WebFileTool.saveMultipartFile(file);
 		model.addAttribute("filename", savedFile.getPath());
 		return "/demo/index";
 	}

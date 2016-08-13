@@ -19,7 +19,6 @@ import com.lehang.web.module.lehang.service.ICollaboratorService;
 import com.lehang.web.module.lehang.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
-import net.eulerform.common.GlobalProperties;
 import net.eulerform.common.GlobalPropertyReadException;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.BaseController;
@@ -69,8 +68,7 @@ public class LeHangWebController extends BaseController {
             if(collaborator.getId() != null) {
                 this.collaboratorService.deleteLogo(collaborator.getId() );
             }
-            String uploadPath = this.getServletContext().getRealPath(GlobalProperties.get(GlobalProperties.UPLOAD_PATH));
-            File savedFile = WebFileTool.saveMultipartFile(logo, uploadPath);
+            File savedFile = WebFileTool.saveMultipartFile(logo);
             collaborator.setLogoFileName(savedFile.getName());            
         }
         

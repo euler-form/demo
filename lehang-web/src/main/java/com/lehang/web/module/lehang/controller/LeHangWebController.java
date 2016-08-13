@@ -1,7 +1,6 @@
 package com.lehang.web.module.lehang.controller;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +18,11 @@ import com.lehang.web.module.lehang.service.ICollaboratorService;
 import com.lehang.web.module.lehang.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
-import net.eulerform.common.GlobalPropertyReadException;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.BaseController;
 import net.eulerform.web.core.base.entity.PageResponse;
 import net.eulerform.web.core.base.entity.QueryRequest;
+import net.eulerform.web.core.exception.MultipartFileSaveException;
 import net.eulerform.web.core.util.WebFileTool;
 
 @WebController
@@ -62,7 +61,7 @@ public class LeHangWebController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value = "/saveCollaborator", method = RequestMethod.POST)
-    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, Collaborator collaborator) throws IllegalStateException, IOException, GlobalPropertyReadException {
+    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, Collaborator collaborator) throws MultipartFileSaveException {
         BeanTool.clearEmptyProperty(collaborator);
         if(logo != null && logo.getSize() > 0){
             if(collaborator.getId() != null) {

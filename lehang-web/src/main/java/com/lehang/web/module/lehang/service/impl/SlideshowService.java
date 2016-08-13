@@ -1,7 +1,6 @@
 package com.lehang.web.module.lehang.service.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,6 +18,7 @@ import net.eulerform.common.GlobalProperties;
 import net.eulerform.common.GlobalPropertyReadException;
 import net.eulerform.common.StringTool;
 import net.eulerform.web.core.base.service.impl.BaseService;
+import net.eulerform.web.core.exception.MultipartFileSaveException;
 import net.eulerform.web.core.util.WebFileTool;
 
 @Service
@@ -62,7 +62,7 @@ public class SlideshowService extends BaseService implements ISlideshowService {
                 
                 File savedFile = WebFileTool.saveMultipartFile(img);
                 slideshow.setImgFileName(savedFile.getName());
-            } catch (IllegalStateException | IOException | GlobalPropertyReadException e) {
+            } catch (MultipartFileSaveException | GlobalPropertyReadException e) {
                 throw new RuntimeException(e);
             }
             this.slideshowDao.saveOrUpdate(slideshow);

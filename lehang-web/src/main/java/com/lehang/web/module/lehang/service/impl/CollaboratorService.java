@@ -11,6 +11,8 @@ import com.lehang.web.module.lehang.entity.Collaborator;
 import com.lehang.web.module.lehang.service.ICollaboratorService;
 
 import net.eulerform.common.FileReader;
+import net.eulerform.common.GlobalProperties;
+import net.eulerform.common.GlobalPropertyReadException;
 import net.eulerform.common.StringTool;
 import net.eulerform.web.core.base.entity.PageResponse;
 import net.eulerform.web.core.base.entity.QueryRequest;
@@ -42,7 +44,12 @@ public class CollaboratorService extends BaseService implements ICollaboratorSer
     @Override
     public void deleteLogo(String collaboratorId) {
         Collaborator collaborator = this.collaboratorDao.load(collaboratorId);
-        String filePath = this.getServletContext().getRealPath("/resources/upload")+"/"+collaborator.getLogoFileName();
+        String filePath;
+        try {
+            filePath = this.getServletContext().getRealPath(GlobalProperties.get(GlobalProperties.UPLOAD_PATH))+"/"+collaborator.getLogoFileName();
+        } catch (GlobalPropertyReadException e) {
+            throw new RuntimeException(e);
+        }
         FileReader.deleteFile(new File(filePath));
         
     }

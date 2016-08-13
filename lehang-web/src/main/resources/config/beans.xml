@@ -14,6 +14,9 @@
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 
+    <bean id="slideshowDao" class="com.lehang.web.module.lehang.dao.impl.SlideshowDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     <bean id="collaboratorDao" class="com.lehang.web.module.lehang.dao.impl.CollaboratorDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>

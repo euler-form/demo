@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lehang.web.module.lehang.entity.Collaborator;
+import com.lehang.web.module.lehang.entity.SlideshowVO;
 import com.lehang.web.module.lehang.service.ICollaboratorService;
+import com.lehang.web.module.lehang.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
+import net.eulerform.common.GlobalProperties;
+import net.eulerform.common.GlobalPropertyReadException;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.BaseController;
 import net.eulerform.web.core.base.entity.PageResponse;
@@ -29,6 +33,7 @@ import net.eulerform.web.core.util.WebFileTool;
 public class LeHangWebController extends BaseController {
 
     @Resource ICollaboratorService collaboratorService;
+    @Resource ISlideshowService slideshowService;
     
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news() {
@@ -38,8 +43,12 @@ public class LeHangWebController extends BaseController {
     
     @RequestMapping(value = "/collaborator", method = RequestMethod.GET)
     public String collaborator() {
-        System.out.println("inini");
         return "/lehangManage/collaborator";
+    }
+    
+    @RequestMapping(value = "/slideshow", method = RequestMethod.GET)
+    public String slideshow() {
+        return "/lehangManage/slideshow";
     }
     
     @ResponseBody
@@ -54,13 +63,13 @@ public class LeHangWebController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value = "/saveCollaborator", method = RequestMethod.POST)
-    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, Collaborator collaborator) throws IllegalStateException, IOException {
+    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, Collaborator collaborator) throws IllegalStateException, IOException, GlobalPropertyReadException {
         BeanTool.clearEmptyProperty(collaborator);
         if(logo != null && logo.getSize() > 0){
             if(collaborator.getId() != null) {
                 this.collaboratorService.deleteLogo(collaborator.getId() );
             }
-            String uploadPath = this.getServletContext().getRealPath("/resources/upload");
+            String uploadPath = this.getServletContext().getRealPath(GlobalProperties.get(GlobalProperties.UPLOAD_PATH));
             File savedFile = WebFileTool.saveMultipartFile(logo, uploadPath);
             collaborator.setLogoFileName(savedFile.getName());            
         }
@@ -73,5 +82,24 @@ public class LeHangWebController extends BaseController {
     public void deleteCollaborators(@RequestParam String ids) {
         String[] idArray = ids.trim().replace(" ", "").split(";");
         this.collaboratorService.deleteCollaborators(idArray);
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/loadSlideshow", method = RequestMethod.GET)
+    public SlideshowVO loadSlideshow() {
+        return this.slideshowService.loadSlideshow();
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/saveSlideshow", method = RequestMethod.POST)
+    public void saveSlideshow(
+            @RequestParam(value = "img1", required = false) MultipartFile img1,
+            @RequestParam(value = "img2", required = false) MultipartFile img2,
+            @RequestParam(value = "img3", required = false) MultipartFile img3,
+            @RequestParam(value = "url1", required = false) String url1,
+            @RequestParam(value = "url2", required = false) String url2,
+            @RequestParam(value = "url3", required = false) String url3
+        ) {
+        this.slideshowService.saveSlideshow(img1, url1, img2, url2, img3, url3);
     }
 }

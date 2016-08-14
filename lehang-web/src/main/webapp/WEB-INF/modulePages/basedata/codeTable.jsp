@@ -18,28 +18,28 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('codeTable.name')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
                     <td>${euler:i18n('codeTable.codeType')}</td>
                     <td><input class="easyui-combobox search-input" id="query_codeType" name="query.codeType"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                     <td>${euler:i18n('codeTable.description')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description"></td>
                 </tr>
                 <tr>
                     <td>${euler:i18n('codeTable.value')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_value" name="query.value" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_value" name="query.value"></td>
                     <td>${euler:i18n('codeTable.valueZhCn')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_valueZhCn" name="query.valueZhCn" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_valueZhCn" name="query.valueZhCn"></td>
                     <td>${euler:i18n('codeTable.valueEnUs')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_valueEnUs" name="query.valueEnUs" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_valueEnUs" name="query.valueEnUs"></td>
                 </tr>
                 <%-- <tr>
                     <td>${euler:i18n('createPerson')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_createBy" name="query.createBy" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_createBy" name="query.createBy"></td>
                     <td>${euler:i18n('lastModifyPerson')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_modifyBy" name="query.modifyBy" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_modifyBy" name="query.modifyBy"></td>
                     <td>${euler:i18n('lastModifyDate')}</td>
-                    <td><input class="easyui-datebox search-input" id="query_modifyDate" name="query.modifyDate" /></td>
+                    <td><input class="easyui-datebox search-input" id="query_modifyDate" name="query.modifyDate"></td>
                 </tr> --%>
             </table>
             <table class="search-btn-table">

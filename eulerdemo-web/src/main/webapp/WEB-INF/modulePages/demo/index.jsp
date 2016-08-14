@@ -11,7 +11,7 @@
     ${user.username}<br>
     ${user.password}<br>
 	<form action="upload" method="post" enctype="multipart/form-data">  
-	<input type="file" name="file" /> <input type="submit" value="Submit" /></form> 
+	<input type="file" name="file"> <input type="submit" value="Submit"></form> 
 </div>
 
 <%@ include file="/WEB-INF/commonPages/footer.jsp"%>

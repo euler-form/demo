@@ -18,11 +18,11 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('resource.resourceId')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_resourceId" name="query.resourceId" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_resourceId" name="query.resourceId"></td>
                     <td>${euler:i18n('resource.name')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
                     <td>${euler:i18n('resource.description')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description"></td>
                 </tr>
             </table>
             <table class="search-btn-table">

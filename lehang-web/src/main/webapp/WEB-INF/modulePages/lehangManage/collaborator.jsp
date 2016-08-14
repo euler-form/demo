@@ -24,7 +24,7 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('collaborator.name')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
                 </tr>
             </table>
             <table class="search-btn-table">

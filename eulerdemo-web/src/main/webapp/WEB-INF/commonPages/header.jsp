@@ -1,16 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> 
 
 <link rel="stylesheet" type="text/css"
-    href="${contextPath}/resources/css/frame.css" />
+    href="${contextPath}/resources/css/frame.css">
 <link rel="stylesheet" type="text/css"
-    href="${contextPath}/resources/css/global.css" />
+    href="${contextPath}/resources/css/global.css">
 <link rel="stylesheet" type="text/css"
-    href="${contextPath}/resources/css/header.css" />
+    href="${contextPath}/resources/css/header.css">
 <link rel="stylesheet" type="text/css"
-    href="${contextPath}/resources/css/footer.css" />
+    href="${contextPath}/resources/css/footer.css">
 
 </head>
 <body>
@@ -39,9 +39,9 @@
                         class="searchBox" type="text" name="search"
                         value="Input to search..."
                         onfocus="searchBoxClick(this.id); setStyle(this.id, 'inline', 'color:#000000')"
-                        onblur="searchBoxClick(this.id); setStyle(this.id, 'clear')" />
+                        onblur="searchBoxClick(this.id); setStyle(this.id, 'clear')">
                     </span><span id="sbtns"><input id="sBtn"
-                        class="searchBtn" type="submit" value="搜 索" />
+                        class="searchBtn" type="submit" value="搜 索">
                     </span>
                 </form>
             </div>

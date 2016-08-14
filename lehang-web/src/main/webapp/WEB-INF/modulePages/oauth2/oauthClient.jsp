@@ -18,17 +18,17 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('client.clientId')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_clientId" name="query.clientId" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_clientId" name="query.clientId"></td>
                     <td>${euler:i18n('client.description')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description"></td>
                 </tr>
                 <tr>
                     <td>${euler:i18n('client.neverNeedApprove')}</td>
                     <td><input class="easyui-combobox search-input" id="query_neverNeedApprove" name="query.neverNeedApprove"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                     <td>${euler:i18n('client.enabled')}</td>
                     <td><input class="easyui-combobox search-input" id="query_enabled" name="query.enabled"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                 </tr>
             </table>
             <table class="search-btn-table">
@@ -91,10 +91,10 @@
                         <div class="dlg-line"><label class="dlg-label">${euler:i18n('client.neverNeedApprove')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_neverNeedApprove" name="neverNeedApprove"></span></div>
                         <div class="dlg-line"><label class="dlg-label">${euler:i18n('client.enabled')}</label><span class="dlg-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_enabled" name="enabled"></span></div>
                         <div class="dlg-line"><label class="dlg-label">${euler:i18n('client.grantType')}</label><span class="dlg-span" style="text-align:left;"><label 
-                                   class=""><input name="grantType" id="ck_authorization_code" type="checkbox" value="authorization_code" />authorization_code</label><br>
-                            <label class=""><input name="grantType" id="ck_password" type="checkbox" value="password" />password</label><br>
-                            <label class=""><input name="grantType" id="ck_implicit" type="checkbox" value=implicit />implicit</label><br>
-                            <label class=""><input name="grantType" id="ck_refresh_token" type="checkbox" value="refresh_token" />refresh_token</label></span>
+                                   class=""><input name="grantType" id="ck_authorization_code" type="checkbox" value="authorization_code">authorization_code</label><br>
+                            <label class=""><input name="grantType" id="ck_password" type="checkbox" value="password">password</label><br>
+                            <label class=""><input name="grantType" id="ck_implicit" type="checkbox" value=implicit>implicit</label><br>
+                            <label class=""><input name="grantType" id="ck_refresh_token" type="checkbox" value="refresh_token">refresh_token</label></span>
                         </div>
                         <div class="dlg-line"><label class="dlg-label">${euler:i18n('client.description')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
                     </form>
@@ -111,7 +111,7 @@
                                       textField:'name',
                                       toolbar:'#client-resource-toolbar',
                                       singleSelect:false,
-                                      lines:true" ></div>
+                                      lines:true"></div>
                 </div>
                 <div title="${euler:i18n('jsp.client.scope')}" data-options="closable:false">
                     <div id="client-scope-toolbar">
@@ -125,7 +125,7 @@
                                       textField:'name',
                                       toolbar:'#client-scope-toolbar',
                                       singleSelect:false,
-                                      lines:true" ></div>
+                                      lines:true"></div>
                 </div>
                 <div title="${euler:i18n('jsp.client.redirectUri')}" data-options="closable:false">
                     <div id="client-redirect-uri-toolbar">
@@ -139,7 +139,7 @@
                                       textField:'txt',
                                       singleSelect:false,
                                       toolbar:'#client-redirect-uri-toolbar',
-                                      lines:true" ></div>
+                                      lines:true"></div>
                 </div>
             </div>
         

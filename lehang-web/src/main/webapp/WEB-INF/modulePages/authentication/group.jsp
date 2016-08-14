@@ -18,9 +18,9 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('group.name')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
                     <td>${euler:i18n('group.description')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description"></td>
                 </tr>
             </table>
             <table class="search-btn-table">
@@ -84,7 +84,7 @@
                           textField:'name',
                           singleSelect:false,
                           toolbar:'#group-auth-toolbar',
-                          lines:true" ></div>
+                          lines:true"></div>
     </div>
     <script src="${contextPath}/resources/scripts/lib/easyui/jquery.min.js"></script>
     <script src="${contextPath}/resources/scripts/lib/easyui/jquery.easyui.min.js"></script>

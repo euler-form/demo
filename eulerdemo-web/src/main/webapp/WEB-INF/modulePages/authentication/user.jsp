@@ -21,23 +21,23 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('user.username')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_username" name="query.username" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_username" name="query.username"></td>
                     <td>${euler:i18n('user.empName')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_empName" name="query.empName" /></td>
+                    <td><input class="easyui-textbox search-input" id="query_empName" name="query.empName"></td>
                     <td>${euler:i18n('user.enabled')}</td>
                     <td><input class="easyui-combobox search-input" id="query_enabled" name="query.enabled"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                 </tr>
                 <%-- <tr>
                     <td>${euler:i18n('user.accountNonExpired')}</td>
                     <td><input class="easyui-combobox search-input" id="query_accountNonExpired" name="query.accountNonExpired"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                     <td>${euler:i18n('user.accountNonLocked')}</td>
                     <td><input class="easyui-combobox search-input" id="query_accountNonLocked" name="query.accountNonLocked"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                     <td>${euler:i18n('user.credentialsNonExpired')}</td>
                     <td><input class="easyui-combobox search-input" id="query_credentialsNonExpired" name="query.credentialsNonExpired"
-                            data-options="panelHeight:'auto',panelMaxHeight:'200px'" /></td>
+                            data-options="panelHeight:'auto',panelMaxHeight:'200px'"></td>
                 </tr> --%>
             </table>
             <table class="search-btn-table">
@@ -109,7 +109,7 @@
                           textField:'name',
                           singleSelect:false,
                           toolbar:'#user-group-toolbar',
-                          lines:true" ></div>
+                          lines:true"></div>
     </div>
     <script src="${contextPath}/resources/scripts/lib/easyui/jquery.min.js"></script>
     <script src="${contextPath}/resources/scripts/lib/easyui/jquery.easyui.min.js"></script>

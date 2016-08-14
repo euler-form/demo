@@ -23,7 +23,7 @@
             </div>
 
             <div class="login-form">
-                <form method="post" action="<c:url value="/login" />">
+                <form method="post" action="${contextPath}/login">
                     <div class="form-group">
                         <input type="username" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username">
                     </div>
@@ -63,20 +63,20 @@
     <body>
         <h2>Log In</h2>
         <c:if test="${param.containsKey('error')}">
-            <b>Login failed. Please try again.</b><br /><br />
+            <b>Login failed. Please try again.</b><br><br>
         </c:if>
         <c:if test="${param.containsKey('loggedOut')}">
-            <b>You are now logged out.</b><br /><br />
+            <b>You are now logged out.</b><br><br>
         </c:if>
-        <form method="post" action="<c:url value="/login" />">
-            Username<br />
-            <input type="text" name="username" /><br /><br />
+        <form method="post" action="<c:url value="/login">">
+            Username<br>
+            <input type="text" name="username"><br><br>
 
-            Password<br />
-            <input type="password" name="password" /><br /><br />
+            Password<br>
+            <input type="password" name="password"><br><br>
 
-            <input type="submit" name="Log In" />
+            <input type="submit" name="Log In">
         </form>
-        <a href="<c:url value="/logout"/>">logout</a>
+        <a href="<c:url value="/logout">">logout</a>
     </body>
 </html> --%>

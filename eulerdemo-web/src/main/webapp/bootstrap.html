@@ -127,7 +127,7 @@
             var iHeight = document.documentElement.clientHeight||document.body.clientHeight;  
             //如果内容的高度大于（窗口的高度 - 导航的高度
             console.log("mainHeight="+mainHeight+" iHeight="+ iHeight);
-            if(mainHeight > (iHeight - navHeight - footerHeight)){   
+            if(mainHeight> (iHeight - navHeight - footerHeight)){   
                 //$("footer").css('position', 'static');
                 $(".fix_bottom").remove();
             }else{   

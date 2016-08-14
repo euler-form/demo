@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <%@ include file="/WEB-INF/commonPages/css.jsp"%>
+    <%@ include file="/WEB-INF/commonPages/easyui-css.jsp"%>
 
     <title></title>
 
@@ -109,7 +109,7 @@
         </div>
     </div>
     
-    <%@ include file="/WEB-INF/commonPages/js.jsp"%>
+    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>
 
     <script>
         $(function(){ 

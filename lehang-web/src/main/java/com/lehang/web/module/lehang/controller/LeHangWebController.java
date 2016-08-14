@@ -49,6 +49,11 @@ public class LeHangWebController extends BaseController {
         return "/lehangManage/slideshow";
     }
     
+    @RequestMapping(value = "/ueditor", method = RequestMethod.GET)
+    public String ueditor() {
+        return "/lehangManage/ueditor";
+    }
+    
     @ResponseBody
     @RequestMapping(value ="/findCollaboratorByPage")
     public PageResponse<Collaborator> findCollaboratorByPage(HttpServletRequest request, String page, String rows) {

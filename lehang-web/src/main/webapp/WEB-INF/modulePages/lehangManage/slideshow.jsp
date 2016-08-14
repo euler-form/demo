@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <%@ include file="/WEB-INF/commonPages/css.jsp"%>
+    <%@ include file="/WEB-INF/commonPages/easyui-css.jsp"%>
 
     <title></title>
     
@@ -58,11 +58,7 @@
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.url')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url3" name="url3"></span></div>
         </form>
     </div>
-    <script src="${contextPath}/resources/scripts/lib/easyui/jquery.min.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/easyui/jquery.easyui.min.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/easyui/easyui-lang-zh_CN.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/common-dict.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/util.js"></script>
+    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>
     <script>    
         $(function(){
             loadImgs();

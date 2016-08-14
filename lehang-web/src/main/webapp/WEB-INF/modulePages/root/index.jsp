@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <%@ include file="/WEB-INF/commonPages/css.jsp"%>
+    <%@ include file="/WEB-INF/commonPages/easyui-css.jsp"%>
     <link rel="stylesheet" href="${contextPath}/resources/css/root/index.css">
 
     <title>${euler:i18n('global.websiteTitle')}</title>

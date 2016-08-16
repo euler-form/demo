@@ -93,6 +93,7 @@
                     iconCls:'icon-save',
                     resizable:false,
                     modal:true,
+                    constrain:true,
                     onClose:clearDlg,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
             <form id="fm" class="dlg-form" method="post">

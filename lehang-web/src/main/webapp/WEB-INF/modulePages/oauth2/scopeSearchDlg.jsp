@@ -9,6 +9,7 @@
             iconCls:'icon-search',
             resizable:false,
             modal:true,
+            constrain:true,
             onClose:clearScopeSearchDlg,
             buttons:[{text:'${euler:i18n('global.confirm')}', iconCls:'icon-ok', handler:confirmScopeSearchDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:closeScopeSearchDlg}]">
     <div id="scope-search-dlg-toolbar">

@@ -10,8 +10,15 @@
     <title></title>
     
     <style>
+        .dlg-window {
+            background-color:#E0ECFF;    
+        }
+    
         .dlg-form {
             padding:6px;
+        }
+        
+        .dlg-line {
         }
         
         .dlg-label {
@@ -20,6 +27,15 @@
         
         .dlg-input {
             width: 800px;
+        }
+        
+        .img-box{
+            height:300px;
+            width:800px;
+            line-height:300px;
+            font-size:30px;
+            color:#aaa;
+            text-align:center;
         }
     </style>
 
@@ -43,17 +59,18 @@
                         top:0,
                         maximized:true,
                         noheader:true,
+                        border:false,
                         buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
         <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
-            <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.img')}1</label><span class="dlg-span"><img class="dlg-input" id="dlg_img-show1" src=""></span></div>
+            <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.img')}1</label><span class="dlg-span"><img class="dlg-input img-box" id="dlg_img-show1" src=""></span></div>
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.newImg')}</label><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img1" name="img1"></span></div>
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.url')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url1" name="url1"></span></div>
             <br><br><br>
-            <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.img')}2</label><span class="dlg-span"><img class="dlg-input" id="dlg_img-show2" src=""></span></div>
+            <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.img')}2</label><span class="dlg-span"><img class="dlg-input img-box" id="dlg_img-show2" src=""></span></div>
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.newImg')}</label><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img2" name="img2"></span></div>
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.url')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url2" name="url2"></span></div>
             <br><br><br>
-            <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.img')}3</label><span class="dlg-span"><img class="dlg-input" id="dlg_img-show3" src=""></span></div>
+            <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.img')}3</label><span class="dlg-span"><img class="dlg-input img-box" id="dlg_img-show3" src="" alt="${euler:i18n('jsp.slideshow.pleaseUpload800x300Img')}"></span></div>
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.newImg')}</label><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img3" name="img3"></span></div>
             <div class="dlg-line"><label class="dlg-label">${euler:i18n('slideshow.url')}</label><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url3" name="url3"></span></div>
         </form>
@@ -90,11 +107,17 @@
                 },
                 success:function(data, textStatus) {
                     var upload = '${contextPath}/upload/';
-                    $('#dlg_img-show1').attr('src', upload+data.slideshows[0].imgFileName);  
+                    
+                    if(data.slideshows[0].imgFileName != "")
+                        $('#dlg_img-show1').attr('src', upload+data.slideshows[0].imgFileName);  
                     $('#dlg_url1').textbox('setValue', data.slideshows[0].url);  
-                    $('#dlg_img-show2').attr('src', upload+data.slideshows[1].imgFileName);  
-                    $('#dlg_url2').textbox('setValue', data.slideshows[1].url);      
-                    $('#dlg_img-show3').attr('src', upload+data.slideshows[2].imgFileName);  
+                    
+                    if(data.slideshows[1].imgFileName != "")
+                        $('#dlg_img-show2').attr('src', upload+data.slideshows[1].imgFileName);  
+                    $('#dlg_url2').textbox('setValue', data.slideshows[1].url);
+                    
+                    if(data.slideshows[2].imgFileName != "")  
+                        $('#dlg_img-show3').attr('src', upload+data.slideshows[2].imgFileName);  
                     $('#dlg_url3').textbox('setValue', data.slideshows[2].url);                                 
                 }
             });

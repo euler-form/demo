@@ -19,6 +19,7 @@ body {
 }
 
 .dlg-window{
+    
 }
 
 .dlg-form{
@@ -28,10 +29,10 @@ body {
     margin-right:auto;
 }
 .dlg-line {
-    width: 100%;
-    text-align:left;
     display:table-row;
     height: 30px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .hidden-line{
@@ -41,7 +42,6 @@ body {
 .dlg-label {
     display:table-cell;
     text-align:left;
-    width:auto;
     padding-left:6px;
     padding-right:6px;
     vertical-align: middle;
@@ -50,7 +50,6 @@ body {
 .dlg-span{
     display:table-cell;
     text-align:left;
-    width:auto;
     padding-left:6px;
     padding-right:6px;
     vertical-align: middle;

@@ -39,6 +39,7 @@
                     iconCls:'icon-save',
                     resizable:false,
                     modal:true,
+                    constrain:true,
                     onClose:clearModuleDlg,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSaveModuleDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancelModuleDlg}]">
             <form id="module-fm" class="dlg-form"  method="post">
@@ -55,6 +56,7 @@
                     iconCls:'icon-save',
                     resizable:false,
                     modal:true,
+                    constrain:true,
                     onClose:clearPageDlg,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSavePageDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancelPageDlg}]">
             <form id="page-fm" class="dlg-form"  method="post">

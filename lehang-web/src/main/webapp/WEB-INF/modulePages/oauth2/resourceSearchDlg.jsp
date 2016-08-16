@@ -9,6 +9,7 @@
             iconCls:'icon-search',
             resizable:false,
             modal:true,
+            constrain:true,
             onClose:clearResourceSearchDlg,
             buttons:[{text:'${euler:i18n('global.confirm')}', iconCls:'icon-ok', handler:confirmResourceSearchDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:closeResourceSearchDlg}]">
     <div id="resource-search-dlg-toolbar">

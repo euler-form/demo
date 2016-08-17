@@ -39,7 +39,7 @@ body {
     display:none;
 }
 
-.dlg-label {
+.dlg-label-span {
     display:table-cell;
     text-align:left;
     padding-left:6px;
@@ -47,7 +47,11 @@ body {
     vertical-align: middle;
 }
 
-.dlg-span{
+.dlg-label {
+    display:inline-block;
+}
+
+.dlg-input-span{
     display:table-cell;
     text-align:left;
     padding-left:6px;

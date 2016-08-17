@@ -47,7 +47,7 @@ body {
     vertical-align: middle;
 }
 
-.dlg-span{
+.dlg-input-span{
     display:table-cell;
     text-align:center;
     width:auto;

@@ -8,6 +8,14 @@
     <%@ include file="/WEB-INF/commonPages/easyui-css.jsp"%>
 
     <title></title>
+    
+    <style>
+        .dlg-label {
+        }
+        .dlg-input{
+            width: 800px;
+        }
+    </style>
 
 </head>
 
@@ -17,12 +25,8 @@
         <form id="search-form">
             <table class="search-table">
                 <tr>
-                    <td>${euler:i18n('resource.resourceId')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_resourceId" name="query.resourceId"></td>
-                    <td>${euler:i18n('resource.name')}</td>
+                    <td>${euler:i18n('collaborator.name')}</td>
                     <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
-                    <td>${euler:i18n('resource.description')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_description" name="query.description"></td>
                 </tr>
             </table>
             <table class="search-btn-table">
@@ -38,12 +42,12 @@
         <div id="toolbar">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="onAdd()">${euler:i18n('global.add')}</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" id="editBtn" iconCls="icon-edit" plain="true" onclick="onEdit()">${euler:i18n('global.edit')}</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" id="editBtn" iconCls="icon-remove" plain="true" onclick="onDelete()">${euler:i18n('global.delete')}</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="onDelete()">${euler:i18n('global.delete')}</a>
         </div>
         <table id="dg" class="easyui-datagrid" 
             data-options="
                 fit:true,
-                url:'findOauthResourceByPage',
+                url:'findCollaboratorByPage',
                 toolbar:'#toolbar',
                 fitColumns:false,
                 rownumbers:true,
@@ -55,34 +59,105 @@
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'id',hidden:true">ID</th>
-                    <th data-options="field:'resourceId',align:'center',width:'200px'">${euler:i18n('resource.resourceId')}</th>
-                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('resource.name')}</th>
-                    <th data-options="field:'description',align:'center',width:'200px'">${euler:i18n('resource.description')}</th>
+                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('collaborator.name')}</th>
+                    <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('collaborator.logo')}</th>
+                    <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('collaborator.order')}</th>
                 </tr>
             </thead>
         </table>
-        <div id="dlg" class="easyui-dialog dlg-window" style="width:400px;"
+        <div id="dlg" class="easyui-dialog dlg-window" style="height:90%;width:90%;"
                 data-options="
                     zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,
                     modal:true,
-                    constrain:true,
                     onClose:clearDlg,
+                    constrain:true,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
-            <form id="fm" class="dlg-form" method="post">
+            <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.resourceId')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.lettersOrNumbers')}'" id="dlg_resourceId" name="resourceId"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.name')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.description')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.title')}</label></span><span class="dlg-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.img')}</label></span><span class="dlg-span"><img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('jsp.news.uploadImg')}</label></span><span class="dlg-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img" name="img"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.context')}</label></span><span class="dlg-span"><script class="dlg-input" id="editor" type="text/plain" style="height:240px;margin:2px;"></script></span></div>
             </form>
         </div>        
     </div>
+    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%><script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.config.js"></script>
+    <script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.all.min.js"> </script>
+    <script src="${contextPath}/resources/scripts/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
     
-    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>
-
-    <script>    
+    <script>
+    var ue = UE.getEditor(
+            'editor',
+            {
+                toolbars: [
+                    [
+                        'source', //源代码
+                        'preview', //预览
+                        'print', //打印
+                        '|',
+                        'undo', //撤销
+                        'redo', //重做
+                        '|',
+                        'formatmatch', //格式刷
+                        'horizontal', //分隔线
+                        'searchreplace', //查询替换
+                        '|',
+                        'forecolor', //字体颜色
+                        'backcolor', //背景色
+                        '|',
+                        'justifyleft', //居左对齐
+                        'justifyright', //居右对齐
+                        'justifycenter', //居中对齐
+                        'justifyjustify', //两端对齐
+                        '|',
+                        'link', //超链接
+                        'unlink', //取消链接
+                        'simpleupload', //单图上传
+                        'map', //Baidu地图
+                        'attachment', //附件
+                    ],
+                    [
+                        'paragraph', //段落格式
+                        'fontfamily', //字体
+                        'fontsize', //字号
+                        '|',
+                        'bold', //加粗
+                        'italic', //斜体
+                        'underline', //下划线
+                        'strikethrough', //删除线
+                        'subscript', //下标
+                        'superscript', //上标
+                        'fontborder', //字符边框
+                        '|',
+                        'forecolor', //字体颜色
+                        'backcolor' //背景色
+                    ],
+                    [
+                        'inserttable', //插入表格
+                        'insertrow', //前插入行
+                        'insertcol', //前插入列
+                        'deleterow', //删除行
+                        'deletecol', //删除列
+                        'mergeright', //右合并单元格
+                        'mergedown', //下合并单元格
+                        'mergecells', //合并多个单元格
+                        'splittorows', //拆分成行
+                        'splittocols', //拆分成列
+                        'splittocells', //完全拆分单元格
+                        'inserttitle', //插入标题
+                        'deletecaption', //删除表格标题
+                        'deletetable', //删除表格
+                        'insertparagraphbeforetable',//"表格前插入行"
+                        'edittable', //表格属性
+                        'edittd' //单元格属性
+                    ]
+                ]
+            });
+    
+    
         $(function(){
         });
         
@@ -102,7 +177,7 @@
         
         function onAdd() {
             $('#fm').form('clear');
-            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.resource.addResource')}");
+            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.addCollaborator')}");
         }
         
         function onEdit() {
@@ -112,14 +187,14 @@
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
                 $('#fm').form('load', row[0]);
-                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.resource.editResource')}");
+                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.editCollaborator')}");
                 
             }
         }
         
         function onSave() {
             $('#fm').form('submit', {
-                url:'saveOauthResource',
+                url:'saveCollaborator',
                 onSumit:function(){
                     return $(this).form('validate');
                 },
@@ -148,7 +223,7 @@
                             ids += row[i].id + ';';
                         }
                         $.ajax({
-                            url:'deleteOauthResources',
+                            url:'deleteCollaborators',
                             type:'POST',
                             async:true,
                             data: "ids=" + ids,

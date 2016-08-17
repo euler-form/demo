@@ -14,7 +14,7 @@
     <script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.config.js"></script>
     <script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.all.min.js"> </script>
     <script src="${contextPath}/resources/scripts/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+    <script id="editor" type="text/plain" style="width:90%;height:1000px;"></script>
     <script>
     var ue = UE.getEditor(
             'editor',

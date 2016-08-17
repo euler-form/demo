@@ -35,7 +35,6 @@ public class LeHangWebController extends BaseController {
     
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news() {
-        System.out.println("inini");
         return "/lehangManage/news";
     }
     

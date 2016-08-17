@@ -11,6 +11,7 @@
     
     <style>
         .dlg-label {
+            width: 48px;
         }
         .dlg-input{
             width: 800px;
@@ -95,7 +96,7 @@
                 toolbars: [
                     [
                         'source', //源代码
-                        'preview', //预览
+                        //'preview', //预览
                         'print', //打印
                         '|',
                         'undo', //撤销

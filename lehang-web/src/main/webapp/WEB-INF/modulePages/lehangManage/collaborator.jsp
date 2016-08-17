@@ -75,9 +75,9 @@
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.name')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.order')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.order')}'" id="dlg_order" name="order"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.name')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.order')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.order')}'" id="dlg_order" name="order"></span></div>
             </form>
         </div>        
     </div>

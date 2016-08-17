@@ -73,9 +73,9 @@
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
             <form id="fm" class="dlg-form" method="post">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.resourceId')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.lettersOrNumbers')}'" id="dlg_resourceId" name="resourceId"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.name')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.description')}</label><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.resourceId')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.lettersOrNumbers')}'" id="dlg_resourceId" name="resourceId"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.name')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('resource.description')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
             </form>
         </div>        
     </div>

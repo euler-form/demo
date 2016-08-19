@@ -103,13 +103,4 @@
     overflow:auto;padding:15px;
 }
 
-.euler-formula {
-    height: 20px;
-    width:200px;
-    margin-top:15px;
-    margin-bottom:15px;
-    background-image:url(Euler-Formula-800_200-1d1d1d.png);
-    background-repeat:no-repeat;
-    background-size:contain;
-    display:inline-block;
-}
+

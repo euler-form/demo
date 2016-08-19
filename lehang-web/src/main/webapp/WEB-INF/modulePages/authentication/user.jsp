@@ -53,6 +53,7 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="onResetPasswd()">${euler:i18n('jsp.user.resetPassword')}</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="onEnable()">${euler:i18n('global.enable')}</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="onDisable()">${euler:i18n('global.disable')}</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="onDelete()">${euler:i18n('global.delete')}</a>
         </div>
         <table id="dg" class="easyui-datagrid"
             data-options="
@@ -286,6 +287,35 @@
                         }
                         $.ajax({
                             url:'disableUsers',
+                            type:'POST',
+                            async:true,
+                            data: "ids=" + ids,
+                            error:function(XMLHttpRequest, textStatus, errorThrown) {
+                                $.messager.alert("${euler:i18n('global.error')}", XMLHttpRequest.responseText);
+                            },
+                            success:function(data, textStatus) {
+                                refreshDatagrid();
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        function onDelete() {
+            var row = $('#dg').datagrid('getSelections');
+
+            if(row == null || row.length < 1){
+                $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToDelete')}");
+            } else if(row){
+                $.messager.confirm("${euler:i18n('global.warn')}", "${euler:i18n('jsp.user.sureToDeleteUser')}", function(r) {
+                    if(r) {
+                        var ids = "";
+                        for(var i = 0; i < row.length; i++){
+                            ids += row[i].id + ';';
+                        }
+                        $.ajax({
+                            url:'deleteUsers',
                             type:'POST',
                             async:true,
                             data: "ids=" + ids,

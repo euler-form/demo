@@ -15,11 +15,11 @@
 <body class="easyui-layout">
     <div id="header-zone" data-options="region:'north',split:false,collapsible:false">
         <div id="header">
-            <span id="site-title"><a href="${contextPath}/"><span class="euler-formula"></span></a></span>
+            <span id="site-title"><a href="${contextPath}/"><span class="demo-brand-200-20"></span></a></span>
         </div>
     </div>
     <div id="footer-zone" data-options="region:'south',split:false,collapsible:false">
-        <div id="footer">Version 0.0.2 &copy;<%=new SimpleDateFormat("yyyy").format(new Date()) %>&nbsp;cFrost&nbsp;<a id="icp"
+        <div id="footer">&copy;<%=new SimpleDateFormat("yyyy").format(new Date()) %>&nbsp;cFrost&nbsp;<a id="icp"
                 href="http://www.miitbeian.gov.cn" target="_Blank">粤ICP备15054669号</a></div>
     </div>
     <div id="content-zone"  data-options="region:'center',split:false">

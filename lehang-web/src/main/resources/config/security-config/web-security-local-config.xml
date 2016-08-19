@@ -17,6 +17,7 @@
         <intercept-url pattern="/logout" access="permitAll" />
         <intercept-url pattern="/oauth/**" access="isFullyAuthenticated()" />
         <intercept-url pattern="/manage/**" access="isFullyAuthenticated()" />
+        <intercept-url pattern="/authentication/signUp" access="permitAll" />
         <intercept-url pattern="/authentication/**" access="isFullyAuthenticated()" />
         <intercept-url pattern="/lehangManage/**" access="isFullyAuthenticated()" />
         <intercept-url pattern="/basedata/**" access="isFullyAuthenticated()" />

@@ -11,6 +11,7 @@
     <!-- Bootstrap -->
     <link href="${contextPath}/resources/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/bootstrap-3.3.5/css/global.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/lib/icon.css" rel="stylesheet">
     <link href="${contextPath}/resources/bootstrap-3.3.5/css/login.css" rel="stylesheet">
 </head>
 
@@ -19,7 +20,8 @@
 
         <div class="site-wrapper-inner">
             <div class="web-title">
-                <img alt="Brand" src="${contextPath}/resources/images/Euler-Formula-800_200-fff.png" width="300px" height="75px">
+                <span class="demo-brand-200-50-fff"></span>
+                <%-- <img alt="Brand" src="${contextPath}/resources/images/Euler-Formula-800_200-fff.png" width="300px" height="75px"> --%>
             </div>
 
             <div class="login-form">

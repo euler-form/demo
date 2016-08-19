@@ -20,6 +20,9 @@
     <bean id="collaboratorDao" class="com.lehang.web.module.lehang.dao.impl.CollaboratorDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <bean id="newsDao" class="com.lehang.web.module.lehang.dao.impl.NewsDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <import resource="beans-database.xml"/>
     <import resource="beans-schedule.xml"/>

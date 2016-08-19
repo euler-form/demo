@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <%@ include file="/WEB-INF/commonPages/easyui-css.jsp"%>
+    <script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.config.js"></script>
+    <script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.all.min.js"> </script>
+    <script src="${contextPath}/resources/scripts/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
 
     <title></title>
     
@@ -26,8 +29,10 @@
         <form id="search-form">
             <table class="search-table">
                 <tr>
-                    <td>${euler:i18n('collaborator.name')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
+                    <td>${euler:i18n('news.title')}</td>
+                    <td><input class="easyui-textbox search-input" id="query_name" name="query.title"></td>
+                    <td>${euler:i18n('news.pubDate')}</td>
+                    <td><input class="easyui-datebox search-input" id="query_pubDate" name="query.pubDate"></td>
                 </tr>
             </table>
             <table class="search-btn-table">
@@ -48,7 +53,7 @@
         <table id="dg" class="easyui-datagrid" 
             data-options="
                 fit:true,
-                url:'findCollaboratorByPage',
+                url:'findNewsByPage',
                 toolbar:'#toolbar',
                 fitColumns:false,
                 rownumbers:true,
@@ -59,35 +64,31 @@
             <thead>
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
-                    <th data-options="field:'id',hidden:true">ID</th>
-                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('collaborator.name')}</th>
-                    <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('collaborator.logo')}</th>
-                    <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('collaborator.order')}</th>
+                    <th data-options="field:'title',align:'center',width:'200px'">${euler:i18n('news.title')}</th>
+                    <th data-options="field:'pubDate',align:'center',width:'200px',formatter:unixDateFormatter">${euler:i18n('news.pubDate')}</th>
+                    <th data-options="field:'id',align:'center',width:'200px',formatter:newsPriviewFormatter">${euler:i18n('jsp.news.priview')}</th>
                 </tr>
             </thead>
         </table>
         <div id="dlg" class="easyui-dialog dlg-window" style="height:90%;width:90%;"
                 data-options="
-                    zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,
-                    modal:true,
+                    modal:false,
                     onClose:clearDlg,
                     constrain:true,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.title')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.title')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_title" name="title"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.img')}</label></span><span class="dlg-input-span"><img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('jsp.news.uploadImg')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img" name="img"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.context')}</label></span><span class="dlg-input-span"><script class="dlg-input" id="editor" type="text/plain" style="height:240px;margin:2px;"></script></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.text')}</label></span><span class="dlg-input-span"><script class="dlg-input" id="editor" type="text/plain" style="height:240px;margin:2px;width:800px;"></script></span></div>
             </form>
         </div>        
     </div>
-    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%><script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.config.js"></script>
-    <script src="${contextPath}/resources/scripts/lib/ueditor/ueditor.all.min.js"> </script>
-    <script src="${contextPath}/resources/scripts/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>
     
     <script>
     var ue = UE.getEditor(
@@ -178,7 +179,7 @@
         
         function onAdd() {
             $('#fm').form('clear');
-            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.addCollaborator')}");
+            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.news.addNews')}");
         }
         
         function onEdit() {
@@ -188,14 +189,14 @@
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
                 $('#fm').form('load', row[0]);
-                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.editCollaborator')}");
+                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.news.editNews')}");
                 
             }
         }
         
         function onSave() {
             $('#fm').form('submit', {
-                url:'saveCollaborator',
+                url:'saveNews',
                 onSumit:function(){
                     return $(this).form('validate');
                 },
@@ -224,7 +225,7 @@
                             ids += row[i].id + ';';
                         }
                         $.ajax({
-                            url:'deleteCollaborators',
+                            url:'deleteNewss',
                             type:'POST',
                             async:true,
                             data: "ids=" + ids,
@@ -257,6 +258,14 @@
             var row = $('#dg').datagrid('clearSelections');
             var row = $('#dg').datagrid('selectRow', rowIndex);
             onEdit();
+        }
+        
+        function newsPriviewFormatter(value, row, index) {
+            return '<a href="javascript:void(0)" onClick="onPriview(\''+value+'\')">${euler:i18n('jsp.news.priview')}</a>';
+        }
+        
+        function onPriview(id) {
+            alert(id);
         }
     </script>
 </body>

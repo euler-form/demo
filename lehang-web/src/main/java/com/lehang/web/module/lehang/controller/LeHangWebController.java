@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lehang.web.module.lehang.entity.Collaborator;
+import com.lehang.web.module.lehang.entity.News;
 import com.lehang.web.module.lehang.entity.SlideshowVO;
 import com.lehang.web.module.lehang.service.ICollaboratorService;
+import com.lehang.web.module.lehang.service.INewsService;
 import com.lehang.web.module.lehang.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
@@ -32,6 +34,7 @@ public class LeHangWebController extends BaseController {
 
     @Resource ICollaboratorService collaboratorService;
     @Resource ISlideshowService slideshowService;
+    @Resource INewsService newsService;
     
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news() {
@@ -62,6 +65,16 @@ public class LeHangWebController extends BaseController {
         int pageSize = Integer.parseInt(rows);
         return this.collaboratorService.findCollaboratorByPage(queryRequest, pageIndex, pageSize);
     }
+
+    @ResponseBody
+    @RequestMapping(value ="/findNewsByPage")
+    public PageResponse<News> findNewsByPage(HttpServletRequest request, String page, String rows) {
+        QueryRequest queryRequest = new QueryRequest(request);
+        
+        int pageIndex = Integer.parseInt(page);
+        int pageSize = Integer.parseInt(rows);
+        return this.newsService.findNewsByPage(queryRequest, pageIndex, pageSize);
+    }
     
     @ResponseBody
     @RequestMapping(value = "/saveCollaborator", method = RequestMethod.POST)
@@ -76,6 +89,24 @@ public class LeHangWebController extends BaseController {
         }
         
         this.collaboratorService.saveCollaborator(collaborator);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/saveNews", method = RequestMethod.POST)
+    public void saveNews(
+            @RequestParam(value = "img", required = false) MultipartFile img,
+            @RequestParam(value = "editorValue", required = true) String text,
+            News news) throws MultipartFileSaveException {
+        
+        if(img != null && img.getSize() > 0){
+            if(news.getId() != null) {
+                this.newsService.deleteNewsImg(news.getId() );
+            }
+            File savedFile = WebFileTool.saveMultipartFile(img);
+            news.setImageFileName(savedFile.getName());            
+        }
+        news.setText(text);
+        this.newsService.saveNews(news);
     }
     
     @ResponseBody

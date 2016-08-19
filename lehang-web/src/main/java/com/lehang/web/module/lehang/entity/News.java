@@ -19,11 +19,16 @@ public class News extends UUIDEntity<News> {
     @NotNull
     @Column(name="TITLE",nullable=false)
     private String title;
+    @Column(name="TAGS")
+    private String tags;
+    @NotNull
+    @Column(name="SUMMARY",nullable=false)
+    private String summary;
     @Column(name="PUB_DATE",nullable=false)
     private Date pubDate;
     @Column(name="IMG_FILE_NAME")
     private String imageFileName;
-    @Column(name="TEXT",nullable=false)
+    @Column(name="TEXT", columnDefinition="TEXT", nullable=false)
     private String text;
     
     public String getTitle() {
@@ -49,6 +54,18 @@ public class News extends UUIDEntity<News> {
     }
     public void setText(String text) {
         this.text = text;
+    }
+    public String getTags() {
+        return tags;
+    }
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+    public String getSummary() {
+        return summary;
+    }
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
     
 }

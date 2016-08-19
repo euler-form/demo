@@ -17,7 +17,7 @@
             width: 48px;
         }
         .dlg-input{
-            width: 800px;
+            width: 900px;
         }
     </style>
 
@@ -30,7 +30,9 @@
             <table class="search-table">
                 <tr>
                     <td>${euler:i18n('news.title')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_name" name="query.title"></td>
+                    <td><input class="easyui-textbox search-input" id="query_title" name="query.title"></td>
+                    <td>${euler:i18n('news.summary')}</td>
+                    <td><input class="easyui-textbox search-input" id="query_summary" name="query.summary"></td>
                     <td>${euler:i18n('news.pubDate')}</td>
                     <td><input class="easyui-datebox search-input" id="query_pubDate" name="query.pubDate"></td>
                 </tr>
@@ -65,12 +67,14 @@
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'title',align:'center',width:'200px'">${euler:i18n('news.title')}</th>
+                    <th data-options="field:'tags',align:'center',width:'200px'">${euler:i18n('news.tags')}</th>
+                    <th data-options="field:'summary',align:'center',width:'200px'">${euler:i18n('news.summary')}</th>
                     <th data-options="field:'pubDate',align:'center',width:'200px',formatter:unixDateFormatter">${euler:i18n('news.pubDate')}</th>
-                    <th data-options="field:'id',align:'center',width:'200px',formatter:newsPriviewFormatter">${euler:i18n('jsp.news.priview')}</th>
+                    <th data-options="field:'id',align:'center',width:'200px',formatter:newsPriviewFormatter">${euler:i18n('global.operate')}</th>
                 </tr>
             </thead>
         </table>
-        <div id="dlg" class="easyui-dialog dlg-window" style="height:90%;width:90%;"
+        <div id="dlg" class="easyui-dialog dlg-window" style="width:96%;height:96%;"
                 data-options="
                     closed:true,
                     iconCls:'icon-save',
@@ -82,9 +86,11 @@
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <input type="hidden" id="dlg_id" name="id">
                 <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.title')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_title" name="title"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.tags')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_tags" name="tags"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.summary')}</label></span><span class="dlg-input-span" style="height:90px;"><input class="easyui-textbox dlg-input" style="height:84px;" data-options="multiline:true" id="dlg_summary" name="summary"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.img')}</label></span><span class="dlg-input-span"><img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('jsp.news.uploadImg')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img" name="img"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.text')}</label></span><span class="dlg-input-span"><script class="dlg-input" id="editor" type="text/plain" style="height:240px;margin:2px;width:800px;"></script></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.text')}</label></span><span class="dlg-input-span"><script class="dlg-input" id="editor" type="text/plain" style="height:360px;margin:2px;"></script></span></div>
             </form>
         </div>        
     </div>
@@ -225,7 +231,7 @@
                             ids += row[i].id + ';';
                         }
                         $.ajax({
-                            url:'deleteNewss',
+                            url:'deleteNews',
                             type:'POST',
                             async:true,
                             data: "ids=" + ids,
@@ -261,11 +267,34 @@
         }
         
         function newsPriviewFormatter(value, row, index) {
-            return '<a href="javascript:void(0)" onClick="onPriview(\''+value+'\')">${euler:i18n('jsp.news.priview')}</a>';
+            return '<a href="javascript:void(0)" onClick="onPriview(\''+value+'\')">${euler:i18n('global.priview')}</a>'
+                 + '&nbsp;｜&nbsp;'
+                 + '<a href="javascript:void(0)" onClick="onPriview(\''+value+'\')">${euler:i18n('global.edit')}</a>'
+                 + '&nbsp;｜&nbsp;'
+                 + '<a href="javascript:void(0)" onClick="clickDelete(\''+value+'\')">${euler:i18n('global.delete')}</a>';
         }
         
         function onPriview(id) {
             alert(id);
+        }
+        
+        function clickDelete(id) {
+            $.messager.confirm("${euler:i18n('global.warn')}", "${euler:i18n('global.sureToDelete')}", function(r) {
+                if(r) {
+                    $.ajax({
+                        url:'deleteNews',
+                        type:'POST',
+                        async:true,
+                        data: "ids=" + id,
+                        error:function(XMLHttpRequest, textStatus, errorThrown) {
+                            $.messager.alert("${euler:i18n('global.error')}", XMLHttpRequest.responseText);
+                        },
+                        success:function(data, textStatus) {
+                            refreshDatagrid();                                    
+                        }
+                    });
+                }
+            });
         }
     </script>
 </body>

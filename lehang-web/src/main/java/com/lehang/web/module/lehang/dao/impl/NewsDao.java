@@ -28,6 +28,10 @@ public class NewsDao extends BaseDao<News> implements INewsDao {
             if (!StringTool.isNull(queryValue)) {
                 detachedCriteria.add(RestrictionsX.like("title", queryValue, MatchMode.ANYWHERE).ignoreCase());
             }
+            queryValue = queryRequest.getQueryValue("summary");
+            if (!StringTool.isNull(queryValue)) {
+                detachedCriteria.add(RestrictionsX.like("summary", queryValue, MatchMode.ANYWHERE).ignoreCase());
+            }
             queryValue = queryRequest.getQueryValue("text");
             if (!StringTool.isNull(queryValue)) {
                 detachedCriteria.add(RestrictionsX.like("text", queryValue, MatchMode.ANYWHERE).ignoreCase());

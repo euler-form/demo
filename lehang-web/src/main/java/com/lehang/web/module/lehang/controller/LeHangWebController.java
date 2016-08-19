@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,7 +79,7 @@ public class LeHangWebController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value = "/saveCollaborator", method = RequestMethod.POST)
-    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, Collaborator collaborator) throws MultipartFileSaveException {
+    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, @Valid Collaborator collaborator) throws MultipartFileSaveException {
         BeanTool.clearEmptyProperty(collaborator);
         if(logo != null && logo.getSize() > 0){
             if(collaborator.getId() != null) {
@@ -96,7 +97,7 @@ public class LeHangWebController extends BaseController {
     public void saveNews(
             @RequestParam(value = "img", required = false) MultipartFile img,
             @RequestParam(value = "editorValue", required = true) String text,
-            News news) throws MultipartFileSaveException {
+            @Valid News news) throws MultipartFileSaveException {
         
         if(img != null && img.getSize() > 0){
             if(news.getId() != null) {
@@ -114,6 +115,13 @@ public class LeHangWebController extends BaseController {
     public void deleteCollaborators(@RequestParam String ids) {
         String[] idArray = ids.trim().replace(" ", "").split(";");
         this.collaboratorService.deleteCollaborators(idArray);
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/deleteNews", method = RequestMethod.POST)
+    public void deleteNews(@RequestParam String ids) {
+        String[] idArray = ids.trim().replace(" ", "").split(";");
+        this.newsService.deleteNews(idArray);
     }
     
     @ResponseBody

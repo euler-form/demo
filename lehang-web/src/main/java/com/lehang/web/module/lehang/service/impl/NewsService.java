@@ -38,8 +38,7 @@ public class NewsService extends BaseService implements INewsService {
 
     @Override
     public void deleteNews(String[] idArray) {
-        // TODO Auto-generated method stub
-        
+        this.newsDao.deleteByIds(idArray);
     }
 
 }

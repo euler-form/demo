@@ -4,7 +4,6 @@
 
     <div id="scope-search-dlg" class="easyui-dialog" title="${euler:i18n('jsp.scope.searchScope')}" style="width:460px;height:400px;"
         data-options="
-            zIndex:99999999,
             closed:true,
             iconCls:'icon-search',
             resizable:false,

@@ -66,7 +66,6 @@
         </table>
         <div id="dlg" class="easyui-dialog dlg-window" style="width:400px;"
                 data-options="
-                    zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,

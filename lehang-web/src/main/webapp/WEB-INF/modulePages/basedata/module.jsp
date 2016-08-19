@@ -34,7 +34,6 @@
         </div>
         <div id="module-dlg" class="easyui-dialog dlg-window" title="${euler:i18n('jsp.module.createModule')}" style="width:400px;"
                 data-options="
-                    zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,
@@ -51,7 +50,6 @@
         </div>
         <div id="page-dlg" class="easyui-dialog dlg-window" title="${euler:i18n('jsp.page.createPage')}" style="width:400px;"
                 data-options="
-                    zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,

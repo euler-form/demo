@@ -73,7 +73,6 @@
         </table>
         <div id="dlg" class="easyui-dialog" style="width:400px;height:370px;"
                 data-options="
-                    zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,
@@ -154,7 +153,6 @@
     <%@ include file="/WEB-INF/modulePages/oauth2/scopeSearchDlg.jsp"%>
     <div id="client-redirect-uri-dlg" class="easyui-dialog" style="width:600px;"
                 data-options="
-                    zIndex:99999999,
                     closed:true,
                     iconCls:'icon-save',
                     resizable:false,

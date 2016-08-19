@@ -4,7 +4,6 @@
 
 <div id="resource-search-dlg" class="easyui-dialog" title="${euler:i18n('jsp.resource.searchResource')}" style="width:460px;height:400px;"
         data-options="
-            zIndex:99999999,
             closed:true,
             iconCls:'icon-search',
             resizable:false,

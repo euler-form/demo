@@ -40,17 +40,10 @@
     </style>
 
 </head>
-<!--  draggable:false,
-                        closable:false,
-                        closed:false,
-                        resizable:false,
-                        modal:true,
-                        noheader:true,
-                        maximized:true,  style="width:100%;"-->
+
 <body">
     <div id="dlg" class="easyui-dialog dlg-window" style="width:100%;"
                     data-options="
-                        zIndex:99999999,
                         closed:false,
                         iconCls:'icon-save',
                         resizable:false,

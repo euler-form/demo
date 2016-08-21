@@ -35,11 +35,21 @@ body {
 
 .dlg-body {
     display:table;
-    border-collapse:separate;
+    border-collapse:collapse;
+    /* border-collapse:separate; */
     border-spacing: 0px;
     width: auto;
     margin-left:auto;
     margin-right:auto;
+}
+
+.dlg-body-title{
+    display:table-caption;
+    height:31px;
+    line-height:31px;
+    text-align:center;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .dlg-line {
@@ -60,7 +70,7 @@ body {
     text-align:left;
     padding:0 6px 0 6px;
     vertical-align: middle;
-    background-color:gray;
+    /* background-color:gray; */
 }
 
 .dlg-cell-span {
@@ -68,17 +78,17 @@ body {
 }
 
 .dlg-label-span {
-    background-color:red;
+    /* background-color:red; */
 }
 
 .dlg-label {
     display:block;
     vertical-align: middle;
-    background-color:green;
+    /* background-color:green; */
 }
 
 .dlg-input-span{
-    background-color:blue;
+    /* background-color:blue; */
 }
 
 .dlg-input{
@@ -86,7 +96,7 @@ body {
     vertical-align: middle;
     text-align:left;
     width: 150px;
-    background-color:green;
+    /* background-color:green; */
 }
 
 .panel-body {
@@ -103,11 +113,12 @@ a:hover{
 
 .dg_img {
     display: inline-block;
-    vertical-align: middle;    
+    vertical-align: middle;
 }
 
 .img-box{
     display:block;
+    vertical-align: middle;
     text-align:center;
     margin-left:auto;
     margin-right:auto;

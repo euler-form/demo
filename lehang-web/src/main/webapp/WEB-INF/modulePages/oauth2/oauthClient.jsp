@@ -84,6 +84,7 @@
             <div id="client-setup-tab" class="easyui-tabs" data-options="collapsible:false" style="width:100%;height:100%;">
                 <div title="${euler:i18n('jsp.client.basic')}" data-options="closable:false">
                     <form id="fm" class="dlg-form" method="post">
+                    <div class="dlg-body">
                         <input type="hidden" id="dlg_id" name="id">
                         <div class="dlg-line">
                             <span class="dlg-label-span">
@@ -137,6 +138,7 @@
                             </span>
                         </div>
                         <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.description')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
+                    </div>
                     </form>
                 </div>
                 <div title="${euler:i18n('jsp.client.resource')}" data-options="closable:false">
@@ -182,12 +184,8 @@
                                       lines:true"></div>
                 </div>
             </div>
-        
-            
         </div>        
     </div>
-    
-    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>
 
     <%@ include file="/WEB-INF/modulePages/oauth2/resourceSearchDlg.jsp"%>
     <%@ include file="/WEB-INF/modulePages/oauth2/scopeSearchDlg.jsp"%>
@@ -201,9 +199,13 @@
                     buttons:[{text:'${euler:i18n('global.confirm')}', iconCls:'icon-ok', handler:onConfirmAddRedirectURIDlg},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancelAddRedirectURIDlg}]">
         
         <form id="client-redirect-uri-fm" class="dlg-form" method="post">
+        <div class="dlg-body">
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('jsp.client.redirectUri')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" style="width: 450px;" id="client-redirect-uri-dlg_newUri" name="newUri"></span></div>
+        </div>
         </form>
     </div>
+    
+    <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>
 
     <script>    
         $(function(){

@@ -88,6 +88,7 @@
                     onClose:clearDlg,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
             <form id="fm" class="dlg-form" method="post">
+                <div class="dlg-body">
                 <input type="hidden" id="dlg_id" name="id">
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.username')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_username" name="username"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.fullName')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_fullName" name="fullName"></span></div>
@@ -95,6 +96,7 @@
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.accountNonExpired')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonExpired" name="accountNonExpired"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.accountNonLocked')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonLocked" name="accountNonLocked"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.credentialsNonExpired')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_credentialsNonExpired" name="credentialsNonExpired"></span></div>
+                </div>
             </form>
         </div>
         <div id="reset-passwd-dlg" class="easyui-dialog dlg-window" style="width:400px;"
@@ -106,9 +108,11 @@
                     onClose:clearResetPasswdDlg,
                     buttons:[{text:'${euler:i18n('global.reset')}', iconCls:'icon-ok', handler:onResetPasswdDlgSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onResetPasswdDlgCancel}]">
             <form id="reset-passwd-fm" class="dlg-form" method="post">
+                <div class="dlg-body">
                 <input type="hidden" id="reset-passwd-dlg-id" name="id">
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('global.newPassword')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,type:'password'" id="reset-passwd-dlg-newpassword" name="newpassword"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('global.confirmPassword')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,type:'password'" id="reset-passwd-dlg-confirmpassword" name="confirmpassword"></span></div>
+                </div>
             </form>
         </div>
     </div>

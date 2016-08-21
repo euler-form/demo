@@ -84,13 +84,57 @@
                     constrain:true,
                     buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
-                <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.title')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_title" name="title"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.tags')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_tags" name="tags"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.summary')}</label></span><span class="dlg-input-span" style="height:90px;"><input class="easyui-textbox dlg-input" style="height:84px;" data-options="multiline:true" id="dlg_summary" name="summary"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.img')}</label></span><span class="dlg-input-span"><img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('jsp.news.uploadImg')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img" name="img"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('news.text')}</label></span><span class="dlg-input-span"><script class="dlg-input" id="editor" type="text/plain" style="height:360px;margin:2px;"></script></span></div>
+                <div class="dlg-body">
+                    <input type="hidden" id="dlg_id" name="id">
+                    <div class="dlg-line">
+                        <span class="dlg-label-span">
+                            <label class="dlg-label">${euler:i18n('news.title')}</label>
+                        </span>
+                        <span class="dlg-input-span">
+                            <input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_title" name="title">
+                        </span>
+                    </div>
+                    <div class="dlg-line">
+                        <span class="dlg-label-span">
+                            <label class="dlg-label">${euler:i18n('news.tags')}</label>
+                        </span>
+                        <span class="dlg-input-span">
+                            <input class="easyui-textbox dlg-input" data-options="" id="dlg_tags" name="tags">
+                        </span>
+                    </div>
+                    <div class="dlg-line">
+                        <span class="dlg-label-span" colspan="2">
+                            <label class="dlg-label">${euler:i18n('news.summary')}</label>
+                        </span>
+                        <span class="dlg-input-span" style="height:90px;">
+                            <input class="easyui-textbox dlg-input" style="height:84px;" data-options="multiline:true" id="dlg_summary" name="summary">
+                        </span>
+                    </div>
+                    <div class="dlg-line">
+                        <span class="dlg-label-span">
+                            <label class="dlg-label">${euler:i18n('news.img')}</label>
+                        </span>
+                        <span class="dlg-input-span">
+                            <img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}">
+                        </span>
+                    </div>
+                    <div class="dlg-line">
+                        <span class="dlg-label-span">
+                            <label class="dlg-label">${euler:i18n('jsp.news.uploadImg')}</label>
+                        </span>
+                        <span class="dlg-input-span">
+                            <input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img" name="img">
+                        </span>
+                    </div>
+                    <div class="dlg-line">
+                        <span class="dlg-label-span">
+                            <label class="dlg-label">${euler:i18n('news.text')}</label>
+                        </span>
+                        <span class="dlg-input-span">
+                            <script class="dlg-input" id="editor" type="text/plain" style="height:360px;margin:2px;"></script>
+                        </span>
+                    </div>
+                </div>
             </form>
         </div>        
     </div>

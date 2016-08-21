@@ -31,6 +31,9 @@ body {
 }
 
 .dlg-form{
+}
+
+.dlg-body {
     display:table;
     width: auto;
     margin-left:auto;
@@ -48,33 +51,38 @@ body {
     display:none;
 }
 
-.dlg-label-span {
+.dlg-cell-span,
+.dlg-label-span,
+.dlg-input-span {
     display:table-cell;
     text-align:left;
     padding-left:6px;
     padding-right:6px;
     vertical-align: middle;
-    background-color:red;
+    /* background-color:gray; */
+}
+
+.dlg-cell-span {
+    padding: 0;
+}
+
+.dlg-label-span {
+    /* background-color:red; */
 }
 
 .dlg-label {
     display:inline-block;
-    background-color:green;
+    /* background-color:green; */
 }
 
 .dlg-input-span{
-    display:table-cell;
-    text-align:left;
-    padding-left:6px;
-    padding-right:6px;
-    vertical-align: middle;
-    background-color:blue;
+    /* background-color:blue; */
 }
 
 .dlg-input{
     text-align:left;
     width: 150px;
-    background-color:green;
+    /* background-color:green; */
 }
 
 .panel-body {

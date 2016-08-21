@@ -14,7 +14,7 @@
             background-color:#E0ECFF;    
         }
     
-        .dlg-form {
+        .dlg-body {
             padding:6px;
         }
         
@@ -55,6 +55,7 @@
                         border:false,
                         buttons:[{text:'${euler:i18n('global.save')}', iconCls:'icon-ok', handler:onSave},{text:'${euler:i18n('global.cancel')}', iconCls:'icon-cancel', handler:onCancel}]">
         <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
+            <div class="dlg-body">
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('slideshow.img')}1</label></span><span class="dlg-input-span"><img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.slideshow.pleaseUpload1600x600Img')}"></span></div>
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('slideshow.newImg')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img1" name="img1"></span></div>
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('slideshow.url')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url1" name="url1"></span></div>
@@ -66,6 +67,7 @@
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('slideshow.img')}3</label></span><span class="dlg-input-span"><img class="dlg-input img-box" id="dlg_img-show3" src="" alt="${euler:i18n('jsp.slideshow.pleaseUpload1600x600Img')}"></span></div>
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('slideshow.newImg')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img3" name="img3"></span></div>
             <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('slideshow.url')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url3" name="url3"></span></div>
+            </div>
         </form>
     </div>
     <%@ include file="/WEB-INF/commonPages/easyui-js.jsp"%>

@@ -18,6 +18,14 @@ body {
     display: inline-block;
 }
 
+.search-input{
+    width: 150px;    
+}
+
+.search-btn {
+    width: 90px;
+}
+
 .dlg-window{
     
 }
@@ -28,6 +36,7 @@ body {
     margin-left:auto;
     margin-right:auto;
 }
+
 .dlg-line {
     display:table-row;
     height: 30px;
@@ -45,10 +54,12 @@ body {
     padding-left:6px;
     padding-right:6px;
     vertical-align: middle;
+    background-color:red;
 }
 
 .dlg-label {
     display:inline-block;
+    background-color:green;
 }
 
 .dlg-input-span{
@@ -57,19 +68,13 @@ body {
     padding-left:6px;
     padding-right:6px;
     vertical-align: middle;
+    background-color:blue;
 }
 
 .dlg-input{
     text-align:left;
     width: 150px;
-}
-
-.search-input{
-    width: 150px;    
-}
-
-.search-btn {
-    width: 90px;
+    background-color:green;
 }
 
 .panel-body {

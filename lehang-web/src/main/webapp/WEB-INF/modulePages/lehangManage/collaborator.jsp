@@ -48,7 +48,7 @@
                 url:'findCollaboratorByPage',
                 toolbar:'#toolbar',
                 fitColumns:false,
-                rownumbers:true,
+                rownumbers:false,
                 remoteSort:false,
                 pagination:true,
                 singleSelect:false,

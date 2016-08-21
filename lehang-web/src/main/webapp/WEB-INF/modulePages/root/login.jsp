@@ -48,7 +48,7 @@
         </div>
 
         <footer class="navbar navbar-inverse navbar-fixed-bottom footer">
-            Version 0.0.2 &copy;2016&nbsp;cFrost&nbsp;<a id="icp" href="http://www.miitbeian.gov.cn" target="_Blank">粤ICP备15054669号</a>
+            &copy;2016&nbsp;cFrost&nbsp;<a id="icp" href="http://www.miitbeian.gov.cn" target="_Blank">粤ICP备15054669号</a>
         </footer>
     </div>
 

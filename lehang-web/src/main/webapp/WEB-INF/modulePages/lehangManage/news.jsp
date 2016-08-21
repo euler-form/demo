@@ -103,7 +103,7 @@
                         </span>
                     </div>
                     <div class="dlg-line">
-                        <span class="dlg-label-span" colspan="2">
+                        <span class="dlg-label-span">
                             <label class="dlg-label">${euler:i18n('news.summary')}</label>
                         </span>
                         <span class="dlg-input-span" style="height:90px;">
@@ -114,8 +114,8 @@
                         <span class="dlg-label-span">
                             <label class="dlg-label">${euler:i18n('news.img')}</label>
                         </span>
-                        <span class="dlg-input-span">
-                            <img class="dlg-input img-box" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}">
+                        <span class="dlg-input-span" style="height:310px;">
+                            <img class="dlg-input img-box" style="height:304px;" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}">
                         </span>
                     </div>
                     <div class="dlg-line">
@@ -126,12 +126,12 @@
                             <input class="easyui-filebox dlg-input" data-options="buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_img" name="img">
                         </span>
                     </div>
-                    <div class="dlg-line">
+                    <div class="dlg-line" style="height:496px;">
                         <span class="dlg-label-span">
                             <label class="dlg-label">${euler:i18n('news.text')}</label>
                         </span>
                         <span class="dlg-input-span">
-                            <script class="dlg-input" id="editor" type="text/plain" style="height:360px;margin:2px;"></script>
+                            <script class="dlg-input" id="editor" type="text/plain" style="height:380px;width:904px;"></script>
                         </span>
                     </div>
                 </div>

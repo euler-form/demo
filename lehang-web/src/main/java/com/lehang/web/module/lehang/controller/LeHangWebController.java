@@ -21,6 +21,7 @@ import com.lehang.web.module.lehang.service.INewsService;
 import com.lehang.web.module.lehang.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
+import net.eulerform.common.StringTool;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.BaseController;
 import net.eulerform.web.core.base.entity.PageResponse;
@@ -89,6 +90,14 @@ public class LeHangWebController extends BaseController {
             collaborator.setLogoFileName(savedFile.getName());            
         }
         
+        if(!StringTool.isNull(collaborator.getUrl())) {
+            String url = collaborator.getUrl();
+            
+            if(url.indexOf("://") < 0) {
+                url = "http://" + url;
+                collaborator.setUrl(url);
+            }
+        }
         this.collaboratorService.saveCollaborator(collaborator);
     }
 

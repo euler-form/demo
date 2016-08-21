@@ -10,9 +10,9 @@ import net.eulerform.web.core.base.entity.UUIDEntity;
 
 @Entity
 @XmlRootElement
-@Table(name="LH_COLLABORATOR")
+@Table(name="LH_COMPANY")
 @SuppressWarnings("serial")
-public class Collaborator extends UUIDEntity<Collaborator> {
+public class Company extends UUIDEntity<Company> {
 
     @NotNull
     @Column(name="NAME",nullable=false)
@@ -21,8 +21,6 @@ public class Collaborator extends UUIDEntity<Collaborator> {
     private String logoFileName;
     @Column(name="DISPLAY_ORDER",nullable=false)
     private Integer order;
-    @Column(name="URL")
-    private String url;
     public String getName() {
         return name;
     }
@@ -41,10 +39,6 @@ public class Collaborator extends UUIDEntity<Collaborator> {
     public void setOrder(Integer order) {
         this.order = order;
     }
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    
+    
 }

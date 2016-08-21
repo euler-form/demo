@@ -60,6 +60,7 @@
                     <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('collaborator.name')}</th>
                     <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('collaborator.logo')}</th>
                     <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('collaborator.order')}</th>
+                    <th data-options="field:'url',align:'center',width:'200px',formatter:urlFormatter">${euler:i18n('collaborator.url')}</th>
                 </tr>
             </thead>
         </table>
@@ -78,6 +79,7 @@
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.name')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.order')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.order')}'" id="dlg_order" name="order"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.url')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url" name="url"></span></div>
                 </div>
             </form>
         </div>        

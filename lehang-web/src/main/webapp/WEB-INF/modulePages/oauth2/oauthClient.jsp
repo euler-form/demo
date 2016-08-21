@@ -71,7 +71,7 @@
                 </tr>
             </thead>
         </table>
-        <div id="dlg" class="easyui-dialog" style="width:400px;height:370px;"
+        <div id="dlg" class="easyui-dialog" style="width:400px;height:357px;"
                 data-options="
                     closed:true,
                     iconCls:'icon-save',

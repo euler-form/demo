@@ -85,16 +85,56 @@
                 <div title="${euler:i18n('jsp.client.basic')}" data-options="closable:false">
                     <form id="fm" class="dlg-form" method="post">
                         <input type="hidden" id="dlg_id" name="id">
-                        <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.clientId')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.lettersOrNumbers')}'" id="dlg_clientId" name="clientId"></span></div>
-                        <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.accessTokenValiditySeconds')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('jsp.client.neverExpires')}'" id="dlg_accessTokenValiditySeconds" name="accessTokenValiditySeconds"></span></div>
-                        <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.refreshTokenValiditySeconds')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('jsp.client.neverExpires')}'" id="dlg_refreshTokenValiditySeconds" name="refreshTokenValiditySeconds"></span></div>
-                        <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.neverNeedApprove')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_neverNeedApprove" name="neverNeedApprove"></span></div>
-                        <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.enabled')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_enabled" name="enabled"></span></div>
-                        <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.grantType')}</label></span><span class="dlg-input-span" style="text-align:left;"><label 
-                                   class=""><input name="grantType" id="ck_authorization_code" type="checkbox" value="authorization_code">authorization_code</label><br>
-                            <label class=""><input name="grantType" id="ck_password" type="checkbox" value="password">password</label><br>
-                            <label class=""><input name="grantType" id="ck_implicit" type="checkbox" value=implicit>implicit</label><br>
-                            <label class=""><input name="grantType" id="ck_refresh_token" type="checkbox" value="refresh_token">refresh_token</label></span>
+                        <div class="dlg-line">
+                            <span class="dlg-label-span">
+                                <label class="dlg-label">${euler:i18n('client.clientId')}</label>
+                            </span>
+                            <span class="dlg-input-span">
+                                <input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('global.lettersOrNumbers')}'" id="dlg_clientId" name="clientId">
+                            </span>
+                        </div>
+                        <div class="dlg-line">
+                            <span class="dlg-label-span">
+                                <label class="dlg-label">${euler:i18n('client.accessTokenValiditySeconds')}</label>
+                            </span>
+                            <span class="dlg-input-span">
+                                <input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('jsp.client.neverExpires')}'" id="dlg_accessTokenValiditySeconds" name="accessTokenValiditySeconds">
+                            </span>
+                        </div>
+                        <div class="dlg-line">
+                            <span class="dlg-label-span">
+                                <label class="dlg-label">${euler:i18n('client.refreshTokenValiditySeconds')}</label>
+                            </span>
+                            <span class="dlg-input-span">
+                                <input class="easyui-textbox dlg-input" data-options="required:true,prompt:'${euler:i18n('jsp.client.neverExpires')}'" id="dlg_refreshTokenValiditySeconds" name="refreshTokenValiditySeconds">
+                            </span>
+                        </div>
+                        <div class="dlg-line">
+                            <span class="dlg-label-span">
+                                <label class="dlg-label">${euler:i18n('client.neverNeedApprove')}</label>
+                            </span>
+                            <span class="dlg-input-span">
+                                <input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_neverNeedApprove" name="neverNeedApprove">
+                            </span>
+                        </div>
+                        <div class="dlg-line">
+                            <span class="dlg-label-span">
+                                <label class="dlg-label">${euler:i18n('client.enabled')}</label>
+                            </span>
+                            <span class="dlg-input-span">
+                                <input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_enabled" name="enabled">
+                            </span>
+                        </div>
+                        <div class="dlg-line">
+                            <span class="dlg-label-span">
+                                <label class="dlg-label">${euler:i18n('client.grantType')}</label>
+                            </span>
+                            <span class="dlg-input-span"">
+                                <label class=""><input name="grantType" id="ck_authorization_code" type="checkbox" value="authorization_code">authorization_code</label><br>
+                                <label class=""><input name="grantType" id="ck_password" type="checkbox" value="password">password</label><br>
+                                <label class=""><input name="grantType" id="ck_implicit" type="checkbox" value=implicit>implicit</label><br>
+                                <label class=""><input name="grantType" id="ck_refresh_token" type="checkbox" value="refresh_token">refresh_token</label>
+                            </span>
                         </div>
                         <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('client.description')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_description" name="description"></span></div>
                     </form>

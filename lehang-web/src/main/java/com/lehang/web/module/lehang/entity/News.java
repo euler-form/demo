@@ -19,8 +19,8 @@ public class News extends UUIDEntity<News> {
     @NotNull
     @Column(name="TITLE",nullable=false)
     private String title;
-    @Column(name="TAGS")
-    private String tags;
+    @Column(name="TOP",nullable=false)
+    private Boolean top;
     @NotNull
     @Column(name="SUMMARY",nullable=false)
     private String summary;
@@ -55,11 +55,11 @@ public class News extends UUIDEntity<News> {
     public void setText(String text) {
         this.text = text;
     }
-    public String getTags() {
-        return tags;
+    public Boolean getTop() {
+        return top;
     }
-    public void setTags(String tags) {
-        this.tags = tags;
+    public void setTop(Boolean top) {
+        this.top = top;
     }
     public String getSummary() {
         return summary;

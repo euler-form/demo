@@ -22,19 +22,19 @@
         .dlg-body-title {
             border-width:1px 1px 0 1px;
             border-style:solid;
-            border-color:#000;
+            border-color:#aaa;
         }
         
         .dlg-line {
         }
         
         .dlg-label-span {
-            border:1px solid #000;
+            border:1px solid #aaa;
             text-align:center;
         }
         
         .dlg-input-span {
-            border:1px solid #000;
+            border:1px solid #aaa;
         }
         
         .dlg-label {

@@ -10,6 +10,7 @@ import com.lehang.web.module.lehang.dao.INewsDao;
 import com.lehang.web.module.lehang.entity.News;
 import com.lehang.web.module.lehang.service.INewsService;
 
+import net.eulerform.common.BeanTool;
 import net.eulerform.web.core.base.entity.PageResponse;
 import net.eulerform.web.core.base.entity.QueryRequest;
 import net.eulerform.web.core.base.service.impl.BaseService;
@@ -21,7 +22,13 @@ public class NewsService extends BaseService implements INewsService {
     
     @Override
     public void saveNews(News news) {
-        news.setPubDate(new Date());
+        BeanTool.clearEmptyProperty(news);
+        if(news.getPubDate() == null)
+            news.setPubDate(new Date());
+
+        if(news.getTop() == null)
+            news.setTop(false);
+        
         this.newsDao.saveOrUpdate(news);
     }
 

@@ -49,8 +49,8 @@
                 <tr>
                     <td>${euler:i18n('news.title')}</td>
                     <td><input class="easyui-textbox search-input" id="query_title" name="query.title"></td>
-                    <td>${euler:i18n('news.summary')}</td>
-                    <td><input class="easyui-textbox search-input" id="query_summary" name="query.summary"></td>
+                    <td>${euler:i18n('news.author')}</td>
+                    <td><input class="easyui-textbox search-input" id="query_author" name="query.author"></td>
                     <td>${euler:i18n('news.pubDate')}</td>
                     <td><input class="easyui-datebox search-input" id="query_pubDate" name="query.pubDate"></td>
                 </tr>

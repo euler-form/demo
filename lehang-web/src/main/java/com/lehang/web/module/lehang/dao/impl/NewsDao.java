@@ -50,7 +50,8 @@ public class NewsDao extends BaseDao<News> implements INewsDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        
+
+        detachedCriteria.addOrder(Order.desc("top"));
         detachedCriteria.addOrder(Order.desc("pubDate"));
         
         PageResponse<News> result = this.findPageBy(detachedCriteria, pageIndex, pageSize);

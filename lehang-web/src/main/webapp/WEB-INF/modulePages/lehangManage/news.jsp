@@ -26,12 +26,6 @@
             border:1px solid #e0e0e0;
         }
         
-        .dlg-input-span-td1{
-        }
-        
-        .dlg-input-span-td3{
-        }
-        
         .dlg-label {
             width:50px;
         }        
@@ -90,11 +84,11 @@
             <thead>
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
-                    <th data-options="field:'title',align:'center',width:'200px'">${euler:i18n('news.title')}</th>
-                    <th data-options="field:'tags',align:'center',width:'200px'">${euler:i18n('news.tags')}</th>
-                    <th data-options="field:'summary',align:'center',width:'200px'">${euler:i18n('news.summary')}</th>
-                    <th data-options="field:'pubDate',align:'center',width:'200px',formatter:unixDateFormatter">${euler:i18n('news.pubDate')}</th>
-                    <th data-options="field:'id',align:'center',width:'200px',formatter:newsPriviewFormatter">${euler:i18n('global.operate')}</th>
+                    <th data-options="field:'title',align:'center',width:'500px'">${euler:i18n('news.title')}</th>
+                    <th data-options="field:'author',align:'center',width:'80px'">${euler:i18n('news.author')}</th>
+                    <th data-options="field:'pubDate',align:'center',width:'130px',formatter:unixDateFormatter">${euler:i18n('news.pubDate')}</th>
+                    <th data-options="field:'top',align:'center',width:'60px',formatter:yesOrNoFormatter">${euler:i18n('news.top')}</th>
+                    <th data-options="field:'id',align:'center',width:'130px',formatter:newsPriviewFormatter">${euler:i18n('global.operate')}</th>
                 </tr>
             </thead>
         </table>
@@ -123,13 +117,13 @@
                             <label class="dlg-label">${euler:i18n('news.summary')}</label>
                         </td>
                         <td class="dlg-input-span" style="height:93px;">
-                            <input class="easyui-textbox dlg-input" style="height:87px;" data-options="multiline:true" id="dlg_summary" name="summary">
+                            <input class="easyui-textbox dlg-input" style="height:87px;" data-options="multiline:true,required:true" id="dlg_summary" name="summary">
                         </td>
                         <td class="dlg-label-span" rowspan="3">
                             <label class="dlg-label">${euler:i18n('news.img')}</label>
                         </td>
                         <td class="dlg-input-span" style="height:155px;" rowspan="3">
-                            <img class="dlg-input img-box" style="height:149px;" id="dlg_img-show1" src="" alt="${euler:i18n('jsp.news.noImg')}">
+                            <img class="dlg-input img-box" style="height:149px;width:350px;" id="dlg_img-show" src="" alt="${euler:i18n('jsp.news.noImg')}">
                         </td>
                     </tr>
                     <tr class="dlg-line">
@@ -137,7 +131,7 @@
                             <label class="dlg-label">${euler:i18n('news.author')}</label>
                         </td>
                         <td class="dlg-input-span">
-                            <input class="easyui-textbox dlg-input" style="" data-options="" id="dlg_author" name="author">
+                            <input class="easyui-textbox dlg-input" style="" data-options="required:true" id="dlg_author" name="author">
                         </td>
                     </tr>
                     <tr class="dlg-line">
@@ -145,7 +139,7 @@
                             <label class="dlg-label">${euler:i18n('news.pubDate')}</label>
                         </td>
                         <td class="dlg-input-span">
-                            <input class="easyui-datetimebox dlg-input" style="width:160px;" data-options=""  id="dlg_pubDateBox" name="pubDateBox">
+                            <input class="easyui-datetimebox dlg-input" style="width:160px;" data-options="required:true"  id="dlg_pubDateStr" name="pubDateStr">
                             &nbsp;&nbsp;&nbsp;<label class=""><input id="ck_top" type="checkbox" value="true" name="top">${euler:i18n('news.top')}</label>
                         </td>
                     </tr>
@@ -166,7 +160,7 @@
                             <label class="dlg-label">${euler:i18n('news.text')}</label>
                         </td>
                         <td class="dlg-input-span" colspan="3">
-                            <script class="dlg-input dlg-input-x3" id="editor" type="text/plain" style="height:380px;width:794px;"></script>
+                            <script class="dlg-input dlg-input-x3" id="editor" name="text" type="text/plain" style="height:380px;width:794px;"></script>
                         </td>
                     </tr>
                 </table>
@@ -264,18 +258,20 @@
         
         function onAdd() {
             $('#fm').form('clear');
-            $('#dlg_pubDateBox').datetimebox('setValue', unixDateFormatter((new Date()).getTime()));
+            $('#dlg_pubDateStr').datetimebox('setValue', unixDateFormatter((new Date()).getTime()));
             $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.news.addNews')}");
         }
         
         function onEdit() {
+            var upload = '${contextPath}/upload/';
             var row = $('#dg').datagrid('getSelections');
             
             if(row == null || row.length < 1){
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
                 $('#fm').form('load', row[0]);
-                $('#dlg_pubDateBox').datetimebox('setValue', unixDateFormatter(row[0].pubDate));
+                $('#dlg_pubDateStr').datetimebox('setValue', unixDateFormatter(row[0].pubDate));
+                setImgSrc('#dlg_img-show', 356, 149, upload + row[0].imageFileName);
                 UE.getEditor('editor').setContent(row[0].text);
                 $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.news.editNews')}");
                 
@@ -337,7 +333,8 @@
         
         function clearDlg(){
             $('#fm').form('clear');
-            UE.getEditor('editor').setContent("");          
+            UE.getEditor('editor').setContent("");  
+            setImgSrc('#dlg_img-show', 356, 149, null);        
         }
         
         function onClose(){
@@ -353,7 +350,7 @@
         function newsPriviewFormatter(value, row, index) {
             return '<a href="javascript:void(0)" onClick="onPriview(\''+value+'\')">${euler:i18n('global.priview')}</a>'
                  + '&nbsp;｜&nbsp;'
-                 + '<a href="javascript:void(0)" onClick="onPriview(\''+value+'\')">${euler:i18n('global.edit')}</a>'
+                 + '<a href="javascript:void(0)" onClick="onDblClickRow(\''+index+'\')">${euler:i18n('global.edit')}</a>'
                  + '&nbsp;｜&nbsp;'
                  + '<a href="javascript:void(0)" onClick="clickDelete(\''+value+'\')">${euler:i18n('global.delete')}</a>';
         }

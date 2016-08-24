@@ -1,5 +1,7 @@
 package com.lehang.web.module.lehang.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lehang.web.module.lehang.entity.SlideshowVO;
@@ -10,7 +12,6 @@ public interface ISlideshowService extends IBaseService {
 
     public SlideshowVO loadSlideshow();
 
-    public void saveSlideshow(MultipartFile img1, String url1, MultipartFile img2, String url2, MultipartFile img3,
-            String url3);
+    public void saveSlideshow(List<MultipartFile> img, List<String> url);
 
 }

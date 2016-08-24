@@ -58,6 +58,48 @@ function clone(data) {
     return d;
 }
 
+function setImgSrc(obj, width, height, src) {
+    
+    $(obj).width(width);
+    $(obj).height(height);
+    $(obj).attr("src", "");
+    
+    if(src == null || src == "")
+        return;
+    
+    loadImage(src, function(img){
+        var page_w = width;
+        var page_h = height;
+        var page_wh = page_w/page_h;
+        var real_w = img.width;
+        var real_h = img.height;
+        var real_wh = real_w/real_h;
+        if(real_wh >= page_wh) {
+            $(obj).height(page_w/real_wh);
+            $(obj).width(page_w);
+        } else {
+            $(obj).width(page_h*real_wh);
+            $(obj).height(page_h);                      
+        }
+        $(obj).attr("src", src);
+    });
+    
+}
+
+function loadImage(url, callback){
+    var img = new Image();
+    img.src = url;
+    // 如果图片被缓存，则直接返回缓存数据
+    if(img.complete){
+        callback(img);
+    }else{
+        // 完全加载完毕的事件
+        img.onload = function(){
+            callback(img);
+        }
+    }            
+}
+
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
         "M+": this.getMonth() + 1, //月份 

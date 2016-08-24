@@ -1,6 +1,9 @@
 package com.lehang.web.module.lehang.controller;
 
 import java.io.File;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +24,7 @@ import com.lehang.web.module.lehang.service.INewsService;
 import com.lehang.web.module.lehang.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
+import net.eulerform.common.CalendarTool;
 import net.eulerform.common.StringTool;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.BaseController;
@@ -105,18 +109,11 @@ public class LeHangWebController extends BaseController {
     @RequestMapping(value = "/saveNews", method = RequestMethod.POST)
     public void saveNews(
             @RequestParam(value = "img", required = false) MultipartFile img,
-            @RequestParam(value = "editorValue", required = true) String text,
-            @Valid News news) throws MultipartFileSaveException {
+            @RequestParam(value = "pubDateStr", required = true) String pubDateStr,
+            @Valid News news) throws MultipartFileSaveException, ParseException {
         
-        if(img != null && img.getSize() > 0){
-            if(news.getId() != null) {
-                this.newsService.deleteNewsImg(news.getId() );
-            }
-            File savedFile = WebFileTool.saveMultipartFile(img);
-            news.setImageFileName(savedFile.getName());            
-        }
-        news.setText(text);
-        this.newsService.saveNews(news);
+        news.setPubDate(CalendarTool.parseDate(pubDateStr, "yyyy-MM-dd HH:mm:ss"));
+        this.newsService.saveNews(news, img);
     }
     
     @ResponseBody
@@ -145,10 +142,22 @@ public class LeHangWebController extends BaseController {
             @RequestParam(value = "img1", required = false) MultipartFile img1,
             @RequestParam(value = "img2", required = false) MultipartFile img2,
             @RequestParam(value = "img3", required = false) MultipartFile img3,
+            @RequestParam(value = "img4", required = false) MultipartFile img4,
             @RequestParam(value = "url1", required = false) String url1,
             @RequestParam(value = "url2", required = false) String url2,
-            @RequestParam(value = "url3", required = false) String url3
+            @RequestParam(value = "url3", required = false) String url3,
+            @RequestParam(value = "url4", required = false) String url4
         ) {
-        this.slideshowService.saveSlideshow(img1, url1, img2, url2, img3, url3);
+        List<MultipartFile> img = new ArrayList<>();
+        List<String> url = new ArrayList<>();
+        img.add(img1);
+        img.add(img2);
+        img.add(img3);
+        img.add(img4);
+        url.add(url1);
+        url.add(url2);
+        url.add(url3);
+        url.add(url4);
+        this.slideshowService.saveSlideshow(img, url);
     }
 }

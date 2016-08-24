@@ -19,6 +19,9 @@ public class News extends UUIDEntity<News> {
     @NotNull
     @Column(name="TITLE",nullable=false)
     private String title;
+    @NotNull
+    @Column(name="AUTHOR",nullable=false)
+    private String author;
     @Column(name="TOP",nullable=false)
     private Boolean top;
     @NotNull
@@ -28,6 +31,7 @@ public class News extends UUIDEntity<News> {
     private Date pubDate;
     @Column(name="IMG_FILE_NAME")
     private String imageFileName;
+    @NotNull
     @Column(name="TEXT", columnDefinition="TEXT", nullable=false)
     private String text;
     
@@ -66,6 +70,12 @@ public class News extends UUIDEntity<News> {
     }
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
     }
     
 }

@@ -35,22 +35,24 @@ public class SlideshowService extends BaseService implements ISlideshowService {
     }
 
     @Override
-    public void saveSlideshow(MultipartFile img1, String url1, MultipartFile img2, String url2, MultipartFile img3,
-            String url3) {
-        this.saveSlideshowByOrder(img1, url1, 1);
-        this.saveSlideshowByOrder(img2, url2, 2);
-        this.saveSlideshowByOrder(img3, url3, 3);
+    public void saveSlideshow(List<MultipartFile> img, List<String> url) {
+        for(int i = 0; i < img.size(); i++) {
+            this.saveSlideshowByOrder(img.get(i), url.get(i), i);
+            
+        }
     }
     
     private void saveSlideshowByOrder(MultipartFile img, String url, int order){
+        Slideshow slideshow = this.slideshowDao.findSlideshowByOrder(order);
+        
+        if(slideshow == null) {
+            slideshow = new Slideshow();
+            slideshow.setOrder(order);
+        }
+        slideshow.setUrl(url);
+        
         if(img != null && img.getSize() > 0){
-            Slideshow slideshow = this.slideshowDao.findSlideshowByOrder(order);
             
-            if(slideshow == null) {
-                slideshow = new Slideshow();
-                slideshow.setOrder(order);
-            }
-            slideshow.setUrl(url);
             try {
                 String uploadPath = this.getServletContext().getRealPath(GlobalProperties.get(GlobalProperties.UPLOAD_PATH));
                 
@@ -65,8 +67,8 @@ public class SlideshowService extends BaseService implements ISlideshowService {
             } catch (MultipartFileSaveException | GlobalPropertyReadException e) {
                 throw new RuntimeException(e);
             }
-            this.slideshowDao.saveOrUpdate(slideshow);
         }
-        
+
+        this.slideshowDao.saveOrUpdate(slideshow);
     }
 }

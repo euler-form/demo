@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.service.impl;
+package com.lehang.web.module.cms.service.impl;
 
 import java.io.File;
 import java.util.Date;
@@ -8,9 +8,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lehang.web.module.lehang.dao.INewsDao;
-import com.lehang.web.module.lehang.entity.News;
-import com.lehang.web.module.lehang.service.INewsService;
+import com.lehang.web.module.cms.dao.INewsDao;
+import com.lehang.web.module.cms.entity.News;
+import com.lehang.web.module.cms.service.INewsService;
 
 import net.eulerform.common.BeanTool;
 import net.eulerform.common.FileReader;

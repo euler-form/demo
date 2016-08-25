@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.entity;
+package com.lehang.web.module.cms.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import net.eulerform.web.core.base.entity.UUIDEntity;
 
 @Entity
 @XmlRootElement
-@Table(name="LH_SLIDESHOW")
+@Table(name="CMS_SLIDESHOW")
 @SuppressWarnings("serial")
 public class Slideshow extends UUIDEntity<Slideshow> {
 

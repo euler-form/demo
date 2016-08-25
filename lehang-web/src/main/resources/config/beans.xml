@@ -14,13 +14,13 @@
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 
-    <bean id="slideshowDao" class="com.lehang.web.module.lehang.dao.impl.SlideshowDao">
+    <bean id="slideshowDao" class="com.lehang.web.module.cms.dao.impl.SlideshowDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="collaboratorDao" class="com.lehang.web.module.lehang.dao.impl.CollaboratorDao">
+    <bean id="partnerDao" class="com.lehang.web.module.cms.dao.impl.PartnerDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="newsDao" class="com.lehang.web.module.lehang.dao.impl.NewsDao">
+    <bean id="newsDao" class="com.lehang.web.module.cms.dao.impl.NewsDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 

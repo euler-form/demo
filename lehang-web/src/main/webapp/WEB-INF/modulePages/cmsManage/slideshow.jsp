@@ -135,24 +135,24 @@
                 success:function(data, textStatus) {
                     var upload = '${contextPath}/upload/';
                     
-                    if(data.slideshows[0].imgFileName != "")
-                        setImgSrc('#dlg_img-show1', 800, 300, upload+data.slideshows[0].imgFileName);  
-                    $('#dlg_url1').textbox('setValue', data.slideshows[0].url);  
+                    if(data.data[0].imgFileName != "")
+                        setImgSrc('#dlg_img-show1', 800, 300, upload+data.data[0].imgFileName);  
+                    $('#dlg_url1').textbox('setValue', data.data[0].url);  
                     
-                    if(data.slideshows[1].imgFileName != "")
-                        setImgSrc('#dlg_img-show2', 800, 300, upload+data.slideshows[1].imgFileName); 
+                    if(data.data[1].imgFileName != "")
+                        setImgSrc('#dlg_img-show2', 800, 300, upload+data.data[1].imgFileName); 
                         //$('#dlg_img-show2').attr('src', upload+data.slideshows[1].imgFileName);  
-                    $('#dlg_url2').textbox('setValue', data.slideshows[1].url);
+                    $('#dlg_url2').textbox('setValue', data.data[1].url);
                     
-                    if(data.slideshows[2].imgFileName != "")
-                        setImgSrc('#dlg_img-show3', 800, 300, upload+data.slideshows[2].imgFileName); 
+                    if(data.data[2].imgFileName != "")
+                        setImgSrc('#dlg_img-show3', 800, 300, upload+data.data[2].imgFileName); 
                         //$('#dlg_img-show3').attr('src', upload+data.slideshows[2].imgFileName);  
-                    $('#dlg_url3').textbox('setValue', data.slideshows[2].url);
+                    $('#dlg_url3').textbox('setValue', data.data[2].url);
 
-                    if(data.slideshows[3].imgFileName != "")
-                        setImgSrc('#dlg_img-show4', 800, 300, upload+data.slideshows[3].imgFileName); 
+                    if(data.data[3].imgFileName != "")
+                        setImgSrc('#dlg_img-show4', 800, 300, upload+data.data[3].imgFileName); 
                         //$('#dlg_img-show4').attr('src', upload+data.slideshows[3].imgFileName);  
-                    $('#dlg_url4').textbox('setValue', data.slideshows[3].url);
+                    $('#dlg_url4').textbox('setValue', data.data[3].url);
                 }
             });
         }

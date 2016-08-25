@@ -23,7 +23,7 @@
         <form id="search-form">
             <table class="search-table">
                 <tr>
-                    <td>${euler:i18n('collaborator.name')}</td>
+                    <td>${euler:i18n('partner.name')}</td>
                     <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
                 </tr>
             </table>
@@ -45,7 +45,7 @@
         <table id="dg" class="easyui-datagrid" 
             data-options="
                 fit:true,
-                url:'findCollaboratorByPage',
+                url:'findPartnerByPage',
                 toolbar:'#toolbar',
                 fitColumns:false,
                 rownumbers:false,
@@ -57,10 +57,10 @@
                 <tr>
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'id',hidden:true">ID</th>
-                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('collaborator.name')}</th>
-                    <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('collaborator.logo')}</th>
-                    <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('collaborator.order')}</th>
-                    <th data-options="field:'url',align:'center',width:'200px',formatter:urlFormatter">${euler:i18n('collaborator.url')}</th>
+                    <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('partner.name')}</th>
+                    <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('partner.logo')}</th>
+                    <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('partner.order')}</th>
+                    <th data-options="field:'url',align:'center',width:'200px',formatter:urlFormatter">${euler:i18n('partner.url')}</th>
                 </tr>
             </thead>
         </table>
@@ -76,10 +76,10 @@
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <div class="dlg-body">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.name')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.logo')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.order')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.collaborator.order')}'" id="dlg_order" name="order"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('collaborator.url')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url" name="url"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.name')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.logo')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.partner.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.order')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.partner.order')}'" id="dlg_order" name="order"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.url')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url" name="url"></span></div>
                 </div>
             </form>
         </div>        
@@ -106,7 +106,7 @@
         
         function onAdd() {
             $('#fm').form('clear');
-            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.addCollaborator')}");
+            $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.partner.addPartner')}");
         }
         
         function onEdit() {
@@ -116,14 +116,14 @@
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
                 $('#fm').form('load', row[0]);
-                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.collaborator.editCollaborator')}");
+                $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.partner.editPartner')}");
                 
             }
         }
         
         function onSave() {
             $('#fm').form('submit', {
-                url:'saveCollaborator',
+                url:'savePartner',
                 onSumit:function(){
                     return $(this).form('validate');
                 },
@@ -152,7 +152,7 @@
                             ids += row[i].id + ';';
                         }
                         $.ajax({
-                            url:'deleteCollaborators',
+                            url:'deletePartners',
                             type:'POST',
                             async:true,
                             data: "ids=" + ids,

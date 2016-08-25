@@ -159,7 +159,7 @@
                         <td class="dlg-label-span">
                             <label class="dlg-label">${euler:i18n('news.text')}</label>
                         </td>
-                        <td class="dlg-input-span" colspan="3">
+                        <td class="dlg-input-span" colspan="3" style="padding-top:3px; padding-bottom:3px;">
                             <script class="dlg-input dlg-input-x3" id="editor" name="text" type="text/plain" style="height:380px;width:794px;"></script>
                         </td>
                     </tr>
@@ -197,6 +197,7 @@
                         'link', //超链接
                         'unlink', //取消链接
                         'simpleupload', //单图上传
+                        'insertimage', //多图上传
                         'map', //Baidu地图
                         'attachment', //附件
                     ],

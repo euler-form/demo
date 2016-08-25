@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.service.impl;
+package com.lehang.web.module.cms.service.impl;
 
 import java.io.File;
 import java.util.List;
@@ -8,10 +8,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lehang.web.module.lehang.dao.ISlideshowDao;
-import com.lehang.web.module.lehang.entity.Slideshow;
-import com.lehang.web.module.lehang.entity.SlideshowVO;
-import com.lehang.web.module.lehang.service.ISlideshowService;
+import com.lehang.web.module.cms.dao.ISlideshowDao;
+import com.lehang.web.module.cms.entity.Slideshow;
+import com.lehang.web.module.cms.service.ISlideshowService;
 
 import net.eulerform.common.FileReader;
 import net.eulerform.common.GlobalProperties;
@@ -27,11 +26,9 @@ public class SlideshowService extends BaseService implements ISlideshowService {
     @Resource private ISlideshowDao slideshowDao;
 
     @Override
-    public SlideshowVO loadSlideshow() {
+    public List<Slideshow> loadSlideshow() {
         List<Slideshow> data = this.slideshowDao.loadSlideshow();
-        SlideshowVO ret = new SlideshowVO();
-        ret.setSlideshows(data);
-        return ret;
+        return data;
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.lehang.web.module.lehang.dao;
+package com.lehang.web.module.cms.dao;
 
-import com.lehang.web.module.lehang.entity.News;
+import com.lehang.web.module.cms.entity.News;
 
 import net.eulerform.web.core.base.dao.IBaseDao;
 import net.eulerform.web.core.base.entity.PageResponse;

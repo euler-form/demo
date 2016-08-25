@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.controller;
+package com.lehang.web.module.cms.controller;
 
 import java.io.File;
 import java.text.ParseException;
@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lehang.web.module.lehang.entity.Collaborator;
-import com.lehang.web.module.lehang.entity.News;
-import com.lehang.web.module.lehang.entity.SlideshowVO;
-import com.lehang.web.module.lehang.service.ICollaboratorService;
-import com.lehang.web.module.lehang.service.INewsService;
-import com.lehang.web.module.lehang.service.ISlideshowService;
+import com.lehang.web.module.cms.entity.Partner;
+import com.lehang.web.module.cms.entity.News;
+import com.lehang.web.module.cms.entity.Slideshow;
+import com.lehang.web.module.cms.entity.ListResponse;
+import com.lehang.web.module.cms.service.IPartnerService;
+import com.lehang.web.module.cms.service.INewsService;
+import com.lehang.web.module.cms.service.ISlideshowService;
 
 import net.eulerform.common.BeanTool;
 import net.eulerform.common.CalendarTool;
@@ -35,41 +36,41 @@ import net.eulerform.web.core.util.WebFileTool;
 
 @WebController
 @Scope("prototype")
-@RequestMapping("/lehangManage")
-public class LeHangWebController extends BaseController {
+@RequestMapping("/cmsManage")
+public class CmsManageWebController extends BaseController {
 
-    @Resource ICollaboratorService collaboratorService;
+    @Resource IPartnerService partnerService;
     @Resource ISlideshowService slideshowService;
     @Resource INewsService newsService;
     
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news() {
-        return "/lehangManage/news";
+        return "/cmsManage/news";
     }
     
-    @RequestMapping(value = "/collaborator", method = RequestMethod.GET)
-    public String collaborator() {
-        return "/lehangManage/collaborator";
+    @RequestMapping(value = "/partner", method = RequestMethod.GET)
+    public String partner() {
+        return "/cmsManage/partner";
     }
     
     @RequestMapping(value = "/slideshow", method = RequestMethod.GET)
     public String slideshow() {
-        return "/lehangManage/slideshow";
+        return "/cmsManage/slideshow";
     }
     
     @RequestMapping(value = "/ueditor", method = RequestMethod.GET)
     public String ueditor() {
-        return "/lehangManage/ueditor";
+        return "/cmsManage/ueditor";
     }
     
     @ResponseBody
-    @RequestMapping(value ="/findCollaboratorByPage")
-    public PageResponse<Collaborator> findCollaboratorByPage(HttpServletRequest request, String page, String rows) {
+    @RequestMapping(value ="/findPartnerByPage")
+    public PageResponse<Partner> findPartnerByPage(HttpServletRequest request, String page, String rows) {
         QueryRequest queryRequest = new QueryRequest(request);
         
         int pageIndex = Integer.parseInt(page);
         int pageSize = Integer.parseInt(rows);
-        return this.collaboratorService.findCollaboratorByPage(queryRequest, pageIndex, pageSize);
+        return this.partnerService.findPartnerByPage(queryRequest, pageIndex, pageSize);
     }
 
     @ResponseBody
@@ -83,26 +84,26 @@ public class LeHangWebController extends BaseController {
     }
     
     @ResponseBody
-    @RequestMapping(value = "/saveCollaborator", method = RequestMethod.POST)
-    public void collaborator(@RequestParam(value = "logo", required = false) MultipartFile logo, @Valid Collaborator collaborator) throws MultipartFileSaveException {
-        BeanTool.clearEmptyProperty(collaborator);
+    @RequestMapping(value = "/savePartner", method = RequestMethod.POST)
+    public void partner(@RequestParam(value = "logo", required = false) MultipartFile logo, @Valid Partner partner) throws MultipartFileSaveException {
+        BeanTool.clearEmptyProperty(partner);
         if(logo != null && logo.getSize() > 0){
-            if(collaborator.getId() != null) {
-                this.collaboratorService.deleteLogo(collaborator.getId() );
+            if(partner.getId() != null) {
+                this.partnerService.deleteLogo(partner.getId() );
             }
             File savedFile = WebFileTool.saveMultipartFile(logo);
-            collaborator.setLogoFileName(savedFile.getName());            
+            partner.setLogoFileName(savedFile.getName());            
         }
         
-        if(!StringTool.isNull(collaborator.getUrl())) {
-            String url = collaborator.getUrl();
+        if(!StringTool.isNull(partner.getUrl())) {
+            String url = partner.getUrl();
             
             if(url.indexOf("://") < 0) {
                 url = "http://" + url;
-                collaborator.setUrl(url);
+                partner.setUrl(url);
             }
         }
-        this.collaboratorService.saveCollaborator(collaborator);
+        this.partnerService.savePartner(partner);
     }
 
     @ResponseBody
@@ -117,10 +118,10 @@ public class LeHangWebController extends BaseController {
     }
     
     @ResponseBody
-    @RequestMapping(value = "/deleteCollaborators", method = RequestMethod.POST)
-    public void deleteCollaborators(@RequestParam String ids) {
+    @RequestMapping(value = "/deletePartners", method = RequestMethod.POST)
+    public void deletePartners(@RequestParam String ids) {
         String[] idArray = ids.trim().replace(" ", "").split(";");
-        this.collaboratorService.deleteCollaborators(idArray);
+        this.partnerService.deletePartners(idArray);
     }
     
     @ResponseBody
@@ -132,8 +133,8 @@ public class LeHangWebController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value = "/loadSlideshow", method = RequestMethod.GET)
-    public SlideshowVO loadSlideshow() {
-        return this.slideshowService.loadSlideshow();
+    public ListResponse<Slideshow> loadSlideshow() {
+        return new ListResponse<>(this.slideshowService.loadSlideshow());
     }
     
     @ResponseBody

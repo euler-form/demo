@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.dao.impl;
+package com.lehang.web.module.cms.dao.impl;
 
 import java.util.Date;
 
@@ -7,8 +7,8 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import com.lehang.web.module.lehang.dao.INewsDao;
-import com.lehang.web.module.lehang.entity.News;
+import com.lehang.web.module.cms.dao.INewsDao;
+import com.lehang.web.module.cms.entity.News;
 
 import net.eulerform.common.CalendarTool;
 import net.eulerform.common.StringTool;

@@ -1,8 +1,8 @@
-package com.lehang.web.module.lehang.service;
+package com.lehang.web.module.cms.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lehang.web.module.lehang.entity.News;
+import com.lehang.web.module.cms.entity.News;
 
 import net.eulerform.web.core.base.entity.PageResponse;
 import net.eulerform.web.core.base.entity.QueryRequest;

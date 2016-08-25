@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.entity;
+package com.lehang.web.module.cms.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +10,9 @@ import net.eulerform.web.core.base.entity.UUIDEntity;
 
 @Entity
 @XmlRootElement
-@Table(name="LH_COMPANY")
+@Table(name="CMS_PARTNER")
 @SuppressWarnings("serial")
-public class Company extends UUIDEntity<Company> {
+public class Partner extends UUIDEntity<Partner> {
 
     @NotNull
     @Column(name="NAME",nullable=false)
@@ -21,6 +21,8 @@ public class Company extends UUIDEntity<Company> {
     private String logoFileName;
     @Column(name="DISPLAY_ORDER",nullable=false)
     private Integer order;
+    @Column(name="URL")
+    private String url;
     public String getName() {
         return name;
     }
@@ -39,6 +41,10 @@ public class Company extends UUIDEntity<Company> {
     public void setOrder(Integer order) {
         this.order = order;
     }
-    
-    
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

@@ -1,12 +1,12 @@
-package com.lehang.web.module.lehang.dao.impl;
+package com.lehang.web.module.cms.dao.impl;
 
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 
-import com.lehang.web.module.lehang.dao.ISlideshowDao;
-import com.lehang.web.module.lehang.entity.Slideshow;
+import com.lehang.web.module.cms.dao.ISlideshowDao;
+import com.lehang.web.module.cms.entity.Slideshow;
 
 import net.eulerform.web.core.base.dao.impl.hibernate5.BaseDao;
 

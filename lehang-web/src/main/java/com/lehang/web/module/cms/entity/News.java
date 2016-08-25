@@ -1,4 +1,4 @@
-package com.lehang.web.module.lehang.entity;
+package com.lehang.web.module.cms.entity;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import net.eulerform.web.core.base.entity.UUIDEntity;
 
 @Entity
 @XmlRootElement
-@Table(name="LH_NEWS")
+@Table(name="CMS_NEWS")
 @SuppressWarnings("serial")
 public class News extends UUIDEntity<News> {
 

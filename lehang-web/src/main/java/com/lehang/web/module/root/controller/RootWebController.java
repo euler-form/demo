@@ -16,10 +16,4 @@ public class RootWebController extends BaseController {
     public String about() {
         return "/about/index";
     }
-
-    @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-    public String login()
-    {
-        return "/root/login";
-    }
 }

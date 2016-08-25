@@ -23,7 +23,7 @@
             </div>
 
             <div class="login-form">
-                <form method="post" action="${contextPath}/login">
+                <form method="post" action="login">
                     <div class="form-group">
                         <input type="username" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username">
                     </div>

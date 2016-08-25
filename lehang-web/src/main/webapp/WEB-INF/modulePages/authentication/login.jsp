@@ -25,7 +25,7 @@
             </div>
 
             <div class="login-form">
-                <form method="post" id="login-form" action="${contextPath}/login">
+                <form method="post" id="login-form" action="login">
                     <div class="form-group">
                         <input type="username" name="username" class="form-control" id="username" placeholder="Username">
                     </div>

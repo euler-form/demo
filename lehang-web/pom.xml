@@ -51,6 +51,11 @@
         </dependency>
         <dependency>
             <groupId>net.eulerform</groupId>
+            <artifactId>net-eulerform-web-cms-basic</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.eulerform</groupId>
             <artifactId>net-eulerform-web-oauth2-server</artifactId>
             <version>${framework.version}</version>
         </dependency>

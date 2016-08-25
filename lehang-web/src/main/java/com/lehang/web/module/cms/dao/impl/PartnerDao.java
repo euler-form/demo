@@ -48,4 +48,11 @@ public class PartnerDao extends BaseDao<Partner> implements IPartnerDao {
         return result;
     }
 
+    @Override
+    public List<Partner> loadPartners() {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(this.entityClass);        
+        detachedCriteria.addOrder(Order.asc("order"));
+        return this.findBy(detachedCriteria);
+    }
+
 }

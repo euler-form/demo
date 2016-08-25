@@ -67,7 +67,6 @@ public class PartnerService extends BaseService implements IPartnerService {
 
     @Override
     public List<Partner> loadPartners() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.partnerDao.loadPartners();
     }
 }

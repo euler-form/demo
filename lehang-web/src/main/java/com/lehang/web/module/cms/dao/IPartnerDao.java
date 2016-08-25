@@ -1,5 +1,7 @@
 package com.lehang.web.module.cms.dao;
 
+import java.util.List;
+
 import com.lehang.web.module.cms.entity.Partner;
 
 import net.eulerform.web.core.base.dao.IBaseDao;
@@ -11,5 +13,7 @@ public interface IPartnerDao extends IBaseDao<Partner> {
     public int findMaxOrder();
 
     public PageResponse<Partner> findPartnerByPage(QueryRequest queryRequest, int pageIndex, int pageSize);
+
+    public List<Partner> loadPartners();
 
 }

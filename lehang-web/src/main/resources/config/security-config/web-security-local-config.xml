@@ -15,13 +15,18 @@
         <intercept-url pattern="/authentication/login" access="permitAll" />
         <intercept-url pattern="/authentication/login/**" access="permitAll" />
         <intercept-url pattern="/authentication/logout" access="permitAll" />
-        <intercept-url pattern="/oauth/**" access="isFullyAuthenticated()" />
-        <intercept-url pattern="/manage/**" access="isFullyAuthenticated()" />
         <intercept-url pattern="/authentication/signUp" access="permitAll" />
         <intercept-url pattern="/authentication/**" access="isFullyAuthenticated()" />
-        <intercept-url pattern="/lehangManage/**" access="isFullyAuthenticated()" />
+        
+        <intercept-url pattern="/oauth/**" access="isFullyAuthenticated()" />
+        <intercept-url pattern="/manage/**" access="isFullyAuthenticated()" />
+        
         <intercept-url pattern="/basedata/**" access="isFullyAuthenticated()" />
+        
+        <intercept-url pattern="/cms/manage/**" access="isFullyAuthenticated()" />
+        
         <intercept-url pattern="/**" access="permitAll" />
+        
         <form-login login-page="/authentication/login" login-processing-url="/authentication/login"
             authentication-failure-url="/authentication/login?error"
             default-target-url="/" username-parameter="username"

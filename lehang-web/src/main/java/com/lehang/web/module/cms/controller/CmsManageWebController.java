@@ -80,7 +80,7 @@ public class CmsManageWebController extends BaseController {
         
         int pageIndex = Integer.parseInt(page);
         int pageSize = Integer.parseInt(rows);
-        return this.newsService.findNewsByPage(queryRequest, pageIndex, pageSize, true);
+        return this.newsService.findNewsByPage(queryRequest, pageIndex, pageSize, true, true);
     }
     
     @ResponseBody

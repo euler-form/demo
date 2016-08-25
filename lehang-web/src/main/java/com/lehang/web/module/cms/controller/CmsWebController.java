@@ -48,12 +48,12 @@ public class CmsWebController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value ="/findNewsByPage")
-    public PageResponse<News> findNewsByPage(HttpServletRequest request, String page, String rows, boolean loadText) {
+    public PageResponse<News> findNewsByPage(HttpServletRequest request, String page, String rows, boolean loadText, boolean enableTop) {
         QueryRequest queryRequest = new QueryRequest(request);
         
         int pageIndex = Integer.parseInt(page);
         int pageSize = Integer.parseInt(rows);
-        return this.newsService.findNewsByPage(queryRequest, pageIndex, pageSize, loadText);
+        return this.newsService.findNewsByPage(queryRequest, pageIndex, pageSize, loadText, enableTop);
     }
     
     @ResponseBody

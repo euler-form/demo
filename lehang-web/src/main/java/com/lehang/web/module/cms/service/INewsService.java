@@ -13,7 +13,7 @@ public interface INewsService extends IBaseService {
 
     public void saveNews(News news, MultipartFile img) throws MultipartFileSaveException;
 
-    public PageResponse<News> findNewsByPage(QueryRequest queryRequest, int pageIndex, int pageSize, boolean loadText);
+    public PageResponse<News> findNewsByPage(QueryRequest queryRequest, int pageIndex, int pageSize, boolean loadText, boolean enableTop);
 
     public void deleteNews(String[] idArray);
 

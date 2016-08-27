@@ -156,10 +156,6 @@ function yesOrNoFormatter(value, row, index){
     }    
 }
 
-function imgFormatter(value, row, index) {
-    return '<img alt="No Image" style="margin-top:5px;" src="../upload/'+value+'"  width="200px">'
-}
-
 function urlFormatter(value, row, index) {
     if(value == null || value == "")
         return '-';

@@ -25,6 +25,8 @@
                 <tr>
                     <td>${euler:i18n('partner.name')}</td>
                     <td><input class="easyui-textbox search-input" id="query_name" name="query.name"></td>
+                    <td>${euler:i18n('partner.summary')}</td>
+                    <td><input class="easyui-textbox search-input" id="query_summary" name="query.summary"></td>
                 </tr>
             </table>
             <table class="search-btn-table">
@@ -58,13 +60,15 @@
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'id',hidden:true">ID</th>
                     <th data-options="field:'name',align:'center',width:'200px'">${euler:i18n('partner.name')}</th>
+                    <th data-options="field:'summary',align:'center',width:'200px'">${euler:i18n('partner.summary')}</th>
                     <th data-options="field:'logoFileName',align:'center',width:'210px',formatter:imgFormatter">${euler:i18n('partner.logo')}</th>
-                    <th data-options="field:'order',align:'center',width:'200px'">${euler:i18n('partner.order')}</th>
                     <th data-options="field:'url',align:'center',width:'200px',formatter:urlFormatter">${euler:i18n('partner.url')}</th>
+                    <th data-options="field:'show',align:'center',width:'60px',formatter:yesOrNoFormatter">${euler:i18n('partner.show')}</th>
+                    <th data-options="field:'order',align:'center',width:'60px'">${euler:i18n('partner.order')}</th>
                 </tr>
             </thead>
         </table>
-        <div id="dlg" class="easyui-dialog dlg-window" style="width:400px;"
+        <div id="dlg" class="easyui-dialog dlg-window" style="width:450px;"
                 data-options="
                     closed:true,
                     iconCls:'icon-save',
@@ -76,10 +80,30 @@
             <form id="fm" class="dlg-form" enctype="multipart/form-data" method="post">
                 <div class="dlg-body">
                 <input type="hidden" id="dlg_id" name="id">
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.name')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name"></span></div>
+                <div class="dlg-line">
+                    <span class="dlg-label-span">
+                        <label class="dlg-label">${euler:i18n('partner.name')}</label>
+                    </span>
+                    <span class="dlg-input-span">
+                        <input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_name" name="name">
+                    </span>
+                </div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.logo')}</label></span><span class="dlg-input-span"><input class="easyui-filebox dlg-input" data-options="prompt:'${euler:i18n('jsp.partner.maxSize')}',buttonText:'${euler:i18n('global.chooseFile')}'" id="dlg_logo" name="logo"></span></div>
-                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.order')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.partner.order')}'" id="dlg_order" name="order"></span></div>
+                <div class="dlg-line">
+                    <span class="dlg-label-span">
+                        <label class="dlg-label">
+                        <label class="">${euler:i18n('partner.show')}<input id="ck_show" type="checkbox" value="true" name="show"></label></label>
+                    </span>
+                    <span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="prompt:'${euler:i18n('jsp.partner.order')}'" id="dlg_order" name="order"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('partner.url')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_url" name="url"></span></div>
+                <div class="dlg-line" style="height:93px;">
+                    <span class="dlg-label-span">
+                        <label class="dlg-label">${euler:i18n('partner.summary')}</label>
+                    </span>
+                    <span class="dlg-input-span">
+                        <input class="easyui-textbox dlg-input" style="height:87px;" data-options="multiline:true" id="dlg_summary" name="summary">
+                    </span>
+                </div>
                 </div>
             </form>
         </div>        
@@ -106,6 +130,7 @@
         
         function onAdd() {
             $('#fm').form('clear');
+            $('#ck_show').attr('checked', 'checked');
             $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.partner.addPartner')}");
         }
         

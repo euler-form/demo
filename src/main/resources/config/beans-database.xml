@@ -100,7 +100,7 @@
         <property name="packagesToScan">
             <array>
                 <value>net.eulerform.web.**.entity</value>
-                <value>com.lehang.web.**.entity</value>
+                <value>com.eulerform.web.**.entity</value>
             </array>
         </property>
         <!-- <property name="configLocations">
@@ -153,7 +153,7 @@
     <aop:config>
             <aop:advisor advice-ref="txAdvice" 
             			 pointcut="execution(* net.eulerform.web..service..*.*(..)) or
-                                   execution(* com.lehang.web..service..*.*(..))" />
+                                   execution(* com.eulerform.web..service..*.*(..))" />
     </aop:config>
 
 </beans>

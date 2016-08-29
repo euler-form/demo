@@ -12,6 +12,10 @@
            http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+           
+    <bean id="slideshowDao" class="net.eulerform.web.module.lh.dao.impl.SlideshowDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <import resource="beans-database.xml"/>
     <import resource="beans-schedule.xml"/>

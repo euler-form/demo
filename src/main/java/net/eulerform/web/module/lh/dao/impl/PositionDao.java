@@ -1,7 +1,9 @@
 package net.eulerform.web.module.lh.dao.impl;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
@@ -14,10 +16,18 @@ import net.eulerform.web.core.base.dao.impl.hibernate5.BaseDao;
 import net.eulerform.web.core.base.request.QueryRequest;
 import net.eulerform.web.core.base.response.PageResponse;
 import net.eulerform.web.core.extend.hibernate5.RestrictionsX;
+import net.eulerform.web.module.cms.basic.entity.Partner;
+import net.eulerform.web.module.cms.basic.service.IPartnerService;
 import net.eulerform.web.module.lh.dao.IPositionDao;
 import net.eulerform.web.module.lh.entity.Position;
 
 public class PositionDao extends BaseDao<Position> implements IPositionDao {
+    
+    private IPartnerService partnerService;
+
+    public void setPartnerService(IPartnerService partnerService) {
+        this.partnerService = partnerService;
+    }
 
     @Override
     public PageResponse<Position> findPositionByPage(QueryRequest queryRequest, int pageIndex, int pageSize) {
@@ -36,6 +46,17 @@ public class PositionDao extends BaseDao<Position> implements IPositionDao {
             queryValue = queryRequest.getQueryValue("companyId");
             if (!StringTool.isNull(queryValue)) {
                 detachedCriteria.add(Restrictions.eq("companyId", queryValue));
+            }
+            queryValue = queryRequest.getQueryValue("companyName");
+            if (!StringTool.isNull(queryValue)) {
+                List<Partner> partnerList = this.partnerService.findPartnerByNameFuzzy(queryValue);
+                if(partnerList != null && !partnerList.isEmpty()) {
+                    Set<String> partnerIdSet = new HashSet<>();
+                    for(Partner each : partnerList) {
+                        partnerIdSet.add(each.getId());
+                    }
+                    detachedCriteria.add(RestrictionsX.in("companyId", partnerIdSet));
+                }
             }
             queryValue = queryRequest.getQueryValue("hot");
             if (!StringTool.isNull(queryValue)) {

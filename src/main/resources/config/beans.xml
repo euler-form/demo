@@ -16,7 +16,10 @@
     <bean id="slideshowDao" class="net.eulerform.web.module.lh.dao.impl.SlideshowDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
+    <bean id="positionDao" class="net.eulerform.web.module.lh.dao.impl.PositionDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
     <import resource="beans-database.xml"/>
     <import resource="beans-schedule.xml"/>
 </beans>

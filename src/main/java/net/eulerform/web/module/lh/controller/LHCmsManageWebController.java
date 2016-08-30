@@ -1,9 +1,12 @@
 package net.eulerform.web.module.lh.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import net.eulerform.common.CalendarTool;
+import net.eulerform.common.StringTool;
 import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.AbstractWebController;
+import net.eulerform.web.core.base.request.QueryRequest;
+import net.eulerform.web.core.base.response.PageResponse;
+import net.eulerform.web.module.lh.entity.Position;
 import net.eulerform.web.module.lh.entity.Slideshow;
+import net.eulerform.web.module.lh.service.IPositionService;
 import net.eulerform.web.module.lh.service.ISlideshowService;
 
 @WebController
@@ -23,10 +32,16 @@ import net.eulerform.web.module.lh.service.ISlideshowService;
 public class LHCmsManageWebController extends AbstractWebController {
 
     @Resource ISlideshowService slideshowService;
+    @Resource IPositionService positionService;
     
     @RequestMapping(value = "/slideshow", method = RequestMethod.GET)
     public String slideshow() {
         return "/cms/manage/slideshow";
+    }
+    
+    @RequestMapping(value = "/position", method = RequestMethod.GET)
+    public String position() {
+        return "/cms/manage/position";
     }
     
     @ResponseBody
@@ -58,5 +73,21 @@ public class LHCmsManageWebController extends AbstractWebController {
         url.add(url3);
         url.add(url4);
         this.slideshowService.saveSlideshow(img, url);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/findPositionByPage")
+    public PageResponse<Position> findPositionByPage(HttpServletRequest request, int page, int rows) {
+        QueryRequest queryRequest = new QueryRequest(request);
+        return this.positionService.findPositionByPage(queryRequest, page, rows);
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/savePosition")
+    public void savePosition(@Valid Position position, String pubDateStr) throws ParseException {
+        if(!StringTool.isNull(pubDateStr)) {
+            position.setPubDate(CalendarTool.parseDate(pubDateStr, "yyyy-MM-dd HH:mm:ss"));
+        }
+        this.positionService.savePosition(position);
     }
 }

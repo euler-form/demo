@@ -150,6 +150,8 @@ function unixDateFormatter(value, row, index) {
 }
 
 function yesOrNoFormatter(value, row, index){
+    if(typeof(value) == 'undefined')
+        return '-';
     for(i in yesOrNo){
         if(yesOrNo[i].key == value+"")
             return yesOrNo[i].value;

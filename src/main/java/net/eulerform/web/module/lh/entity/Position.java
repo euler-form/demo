@@ -19,6 +19,7 @@ public class Position extends UUIDEntity<Position> {
     
     public final static String ACCO_BOEING = "BOEING";
     public final static String ACCO_AIRBUS = "AIRBUS";
+    public final static String ACCO_OTHER = "OTHER";
 
     @NotNull
     @Column(name="NAME", nullable=false)

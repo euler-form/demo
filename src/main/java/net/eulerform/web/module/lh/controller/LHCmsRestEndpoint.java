@@ -14,8 +14,10 @@ import net.eulerform.web.core.base.controller.AbstractRestEndpoint;
 import net.eulerform.web.core.base.request.QueryRequest;
 import net.eulerform.web.core.base.response.WebServicePageResponse;
 import net.eulerform.web.core.base.response.WebServiceResponse;
+import net.eulerform.web.module.lh.entity.HotProject;
 import net.eulerform.web.module.lh.entity.Position;
 import net.eulerform.web.module.lh.entity.Slideshow;
+import net.eulerform.web.module.lh.service.IHotProjectService;
 import net.eulerform.web.module.lh.service.IPositionService;
 import net.eulerform.web.module.lh.service.ISlideshowService;
 
@@ -24,13 +26,20 @@ import net.eulerform.web.module.lh.service.ISlideshowService;
 @RequestMapping("/cms")
 public class LHCmsRestEndpoint extends AbstractRestEndpoint {
 
+    @Resource IHotProjectService hotProjectService;
     @Resource ISlideshowService slideshowService;
     @Resource IPositionService positionService;
     
     @ResponseBody
-    @RequestMapping(value = "/findSlideshowAll", method = RequestMethod.GET)
-    public WebServiceResponse<Slideshow> findSlideshowAll() {
-        return new WebServiceResponse<>(this.slideshowService.loadSlideshow());
+    @RequestMapping(value = "/findSlideshow", method = RequestMethod.GET)
+    public WebServiceResponse<Slideshow> findSlideshow() {
+        return new WebServiceResponse<>(this.slideshowService.loadSlideshowByOrder());
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/findHotProject", method = RequestMethod.GET)
+    public WebServiceResponse<HotProject> findHotProject() {
+        return new WebServiceResponse<>(this.hotProjectService.loadHotProjectByOrder());
     }  
 
     @ResponseBody

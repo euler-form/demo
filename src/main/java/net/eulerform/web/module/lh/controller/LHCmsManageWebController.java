@@ -21,8 +21,10 @@ import net.eulerform.web.core.annotation.WebController;
 import net.eulerform.web.core.base.controller.AbstractWebController;
 import net.eulerform.web.core.base.request.QueryRequest;
 import net.eulerform.web.core.base.response.PageResponse;
+import net.eulerform.web.module.lh.entity.HotProject;
 import net.eulerform.web.module.lh.entity.Position;
 import net.eulerform.web.module.lh.entity.Slideshow;
+import net.eulerform.web.module.lh.service.IHotProjectService;
 import net.eulerform.web.module.lh.service.IPositionService;
 import net.eulerform.web.module.lh.service.ISlideshowService;
 
@@ -31,8 +33,14 @@ import net.eulerform.web.module.lh.service.ISlideshowService;
 @RequestMapping("/cms/manage")
 public class LHCmsManageWebController extends AbstractWebController {
 
+    @Resource IHotProjectService hotProjectService;
     @Resource ISlideshowService slideshowService;
     @Resource IPositionService positionService;
+
+    @RequestMapping(value = "/hotProject", method = RequestMethod.GET)
+    public String hotProject() {
+        return "/cms/manage/hotProject";
+    }
     
     @RequestMapping(value = "/slideshow", method = RequestMethod.GET)
     public String slideshow() {
@@ -73,6 +81,45 @@ public class LHCmsManageWebController extends AbstractWebController {
         url.add(url3);
         url.add(url4);
         this.slideshowService.saveSlideshow(img, url);
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/loadHotProject", method = RequestMethod.GET)
+    public List<HotProject> loadHotProject() {
+        return this.hotProjectService.loadHotProject();
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/saveHotProject", method = RequestMethod.POST)
+    public void saveHotProject(
+            @RequestParam(value = "img1", required = false) MultipartFile img1,
+            @RequestParam(value = "img2", required = false) MultipartFile img2,
+            @RequestParam(value = "img3", required = false) MultipartFile img3,
+            @RequestParam(value = "name1", required = false) String name1,
+            @RequestParam(value = "name2", required = false) String name2,
+            @RequestParam(value = "name3", required = false) String name3,
+            @RequestParam(value = "summary1", required = false) String summary1,
+            @RequestParam(value = "summary2", required = false) String summary2,
+            @RequestParam(value = "summary3", required = false) String summary3
+        ) {
+        List<MultipartFile> img = new ArrayList<>();
+        List<HotProject> hotProjectes = new ArrayList<>();
+        img.add(img1);
+        img.add(img2);
+        img.add(img3);
+        HotProject hotProject1 = new HotProject();
+        HotProject hotProject2 = new HotProject();
+        HotProject hotProject3 = new HotProject();
+        hotProject1.setName(name1);
+        hotProject1.setSummary(summary1);
+        hotProjectes.add(hotProject1);
+        hotProject2.setName(name2);
+        hotProject2.setSummary(summary2);
+        hotProjectes.add(hotProject2);
+        hotProject3.setName(name3);
+        hotProject3.setSummary(summary3);
+        hotProjectes.add(hotProject3);
+        this.hotProjectService.saveHotProject(img, hotProjectes);
     }
 
     @ResponseBody

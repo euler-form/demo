@@ -1,6 +1,7 @@
 package net.eulerform.web.module.lh.service.impl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,7 +26,15 @@ public class SlideshowService extends BaseService implements ISlideshowService {
 
     @Override
     public List<Slideshow> loadSlideshow() {
-        List<Slideshow> data = this.slideshowDao.loadSlideshow();
+        List<Slideshow> data = new ArrayList<>();
+        Slideshow slideshow0 = this.slideshowDao.findSlideshowByOrder(0);
+        data.add(slideshow0 == null ? new Slideshow() : slideshow0);
+        Slideshow slideshow1 = this.slideshowDao.findSlideshowByOrder(1);
+        data.add(slideshow1 == null ? new Slideshow() : slideshow1);
+        Slideshow slideshow2 = this.slideshowDao.findSlideshowByOrder(2);
+        data.add(slideshow2 == null ? new Slideshow() : slideshow2);
+        Slideshow slideshow3 = this.slideshowDao.findSlideshowByOrder(3);
+        data.add(slideshow3 == null ? new Slideshow() : slideshow3);
         return data;
     }
 
@@ -68,5 +77,10 @@ public class SlideshowService extends BaseService implements ISlideshowService {
         }
 
         this.slideshowDao.saveOrUpdate(slideshow);
+    }
+
+    @Override
+    public List<Slideshow> loadSlideshowByOrder() {
+        return this.slideshowDao.loadSlideshow();
     }
 }

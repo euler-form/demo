@@ -16,6 +16,7 @@
         <intercept-url pattern="/authentication/login/**" access="permitAll" />
         <intercept-url pattern="/authentication/logout" access="permitAll" />
         <intercept-url pattern="/authentication/signUp" access="permitAll" />
+        <intercept-url pattern="/authentication/forgotPasswd" access="permitAll" />
         <intercept-url pattern="/authentication/resetPasswd/**" access="permitAll" />
         <intercept-url pattern="/authentication/**" access="isFullyAuthenticated()" />
         

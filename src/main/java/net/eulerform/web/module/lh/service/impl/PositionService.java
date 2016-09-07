@@ -9,8 +9,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import net.eulerform.common.BeanTool;
-import net.eulerform.common.StringTool;
+import net.eulerform.common.util.BeanTool;
+import net.eulerform.common.util.StringTool;
 import net.eulerform.web.core.base.request.QueryRequest;
 import net.eulerform.web.core.base.response.PageResponse;
 import net.eulerform.web.core.base.service.impl.BaseService;

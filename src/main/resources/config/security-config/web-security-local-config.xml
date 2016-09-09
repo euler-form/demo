@@ -12,11 +12,13 @@
 
     <http use-expressions="true">
 
-        <intercept-url pattern="/authentication/login" access="permitAll" />
-        <intercept-url pattern="/authentication/login/**" access="permitAll" />
-        <intercept-url pattern="/authentication/logout" access="permitAll" />
+        <intercept-url pattern="/authentication/signin" access="permitAll" />
+        <intercept-url pattern="/authentication/signin**" access="permitAll" />
+        <intercept-url pattern="/authentication/signout" access="permitAll" />
+        <intercept-url pattern="/authentication/signup" access="permitAll" />
         <intercept-url pattern="/authentication/signUp" access="permitAll" />
-        <intercept-url pattern="/authentication/forgotPasswd" access="permitAll" />
+        <intercept-url pattern="/authentication/forgotpasswd" access="permitAll" />
+        <intercept-url pattern="/authentication/applyResetPasswd" access="permitAll" />
         <intercept-url pattern="/authentication/resetPasswd/**" access="permitAll" />
         <intercept-url pattern="/authentication/**" access="isFullyAuthenticated()" />
         
@@ -29,14 +31,14 @@
         
         <intercept-url pattern="/**" access="permitAll" />
         
-        <form-login login-page="/authentication/login" login-processing-url="/authentication/login"
-            authentication-failure-url="/authentication/login?error"
+        <form-login login-page="/authentication/signin" login-processing-url="/authentication/signin"
+            authentication-failure-url="/authentication/signin?error"
             default-target-url="/" username-parameter="username"
             password-parameter="password" />
-        <logout logout-url="/authentication/logout" logout-success-url="/authentication/login?loggedOut"
+        <logout logout-url="/authentication/signout" logout-success-url="/authentication/signin?loggedOut"
             invalidate-session="true" delete-cookies="JSESSIONID" />
 
-        <session-management invalid-session-url="/authentication/login"
+        <session-management invalid-session-url="/authentication/signin"
             session-fixation-protection="migrateSession">
             <concurrency-control max-sessions="20"
                 error-if-maximum-exceeded="false"

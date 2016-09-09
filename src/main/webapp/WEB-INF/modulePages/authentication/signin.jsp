@@ -6,26 +6,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Log In</title>
+    <title>${global.singin}</title>
 
     <!-- Bootstrap -->
     <link href="${contextPath}/resources/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/bootstrap-3.3.5/css/global.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/lib/icon.css" rel="stylesheet">
-    <link href="${contextPath}/resources/bootstrap-3.3.5/css/login.css" rel="stylesheet">
+    <link href="${contextPath}/resources/bootstrap-3.3.5/local/global.css" rel="stylesheet">
+    <link href="${contextPath}/resources/bootstrap-3.3.5/local/center-from.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="site-wrapper">
+    <div class="wrapper">
 
-        <div class="site-wrapper-inner">
-            <div class="web-title">
+        <div class="wrapper-inner">
+            <div class="title-wrapper">
                 <span class="demo-brand-200-50-fff"></span>
                 <%-- <img alt="Brand" src="${contextPath}/resources/images/Euler-Formula-800_200-fff.png" width="300px" height="75px"> --%>
             </div>
 
-            <div class="login-form">
-                <form method="post" id="login-form" action="login">
+            <div class="main-form-wrapper">
+                <form method="post" class="main-form" action="signin">
                     <div class="form-group">
                         <input type="username" name="username" class="form-control" id="username" placeholder="Username">
                     </div>
@@ -33,21 +33,27 @@
                         <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     <div class="form-group button-group">
+                        <span><a href="forgotpasswd">Forgot password?</a></span><span><input id="remember-me" type="checkbox" value="false" name="remember-me">&nbsp;Remember me</label></span>
+                    </div>
+                    <div class="form-group button-group">
                         <span><button 
                                 type="submit" class="btn btn-success">Sign in</button></span><span><button 
                                 type="button" class="btn btn-info" onClick="signUp()">Sign up</button></span>
                     </div>
                 </form>
+            </div>
+            
+            <div class="info-wrapper">
                 <c:if test="${param.containsKey('error')}">
-                    <b>Login failed. Please try again.</b><br><br>
+                    <b>Login failed. Please try again.</b>
                 </c:if>
                 <c:if test="${param.containsKey('loggedOut')}">
-                    <b>You are now logged out.</b><br><br>
+                    <b>You are now logged out.</b>
                 </c:if>
             </div>
         </div>
 
-        <footer class="navbar navbar-inverse navbar-fixed-bottom footer">
+        <footer class="navbar navbar-inverse navbar-fixed-bottom footer-wrapper">
             &copy;2016&nbsp;cFrost&nbsp;<a id="icp" href="http://www.miitbeian.gov.cn" target="_Blank">粤ICP备15054669号</a>
         </footer>
     </div>

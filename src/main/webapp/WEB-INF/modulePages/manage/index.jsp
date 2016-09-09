@@ -17,7 +17,7 @@
         <div id="header">
             <span id="site-title"><a href="${contextPath}/"><span class="demo-brand-200-20"></span></a></span>
             <span id="user-info" style="position:absolute;right:3px;">
-                <span>${currentUser.fullName}(${currentUser.username})</span>&nbsp;&nbsp;<span><a href="${contextPath}/authentication/logout">${euler:i18n('global.logout')}</a></span>
+                <span>${currentUser.fullName}(${currentUser.username})</span>&nbsp;&nbsp;<span><a href="${contextPath}/authentication/signout">${euler:i18n('global.logout')}</a></span>
             </span>
         </div>
     </div>

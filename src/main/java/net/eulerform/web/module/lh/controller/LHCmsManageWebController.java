@@ -30,7 +30,7 @@ import net.eulerform.web.module.lh.service.ISlideshowService;
 
 @WebController
 @Scope("prototype")
-@RequestMapping("/cms/manage")
+@RequestMapping("/manage/cms")
 public class LHCmsManageWebController extends AbstractWebController {
 
     @Resource IHotProjectService hotProjectService;
@@ -39,17 +39,17 @@ public class LHCmsManageWebController extends AbstractWebController {
 
     @RequestMapping(value = "/hotProject", method = RequestMethod.GET)
     public String hotProject() {
-        return "/cms/manage/hotProject";
+        return "/manage/cms/hotProject";
     }
     
     @RequestMapping(value = "/slideshow", method = RequestMethod.GET)
     public String slideshow() {
-        return "/cms/manage/slideshow";
+        return "/manage/cms/slideshow";
     }
     
     @RequestMapping(value = "/position", method = RequestMethod.GET)
     public String position() {
-        return "/cms/manage/position";
+        return "/manage/cms/position";
     }
     
     @ResponseBody

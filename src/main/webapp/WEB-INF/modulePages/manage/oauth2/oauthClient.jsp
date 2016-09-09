@@ -187,8 +187,8 @@
         </div>        
     </div>
 
-    <%@ include file="/WEB-INF/modulePages/oauth2/resourceSearchDlg.jsp"%>
-    <%@ include file="/WEB-INF/modulePages/oauth2/scopeSearchDlg.jsp"%>
+    <%@ include file="/WEB-INF/modulePages/manage/oauth2/resourceSearchDlg.jsp"%>
+    <%@ include file="/WEB-INF/modulePages/manage/oauth2/scopeSearchDlg.jsp"%>
     <div id="client-redirect-uri-dlg" class="easyui-dialog" style="width:600px;"
                 data-options="
                     closed:true,

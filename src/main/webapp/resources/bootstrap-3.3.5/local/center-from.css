@@ -37,7 +37,7 @@
     margin-right:auto;
     width:300px;    
 }
-
+.checkbox > span,
 .button-group > span {
     display:inline-block;
     width:50%;

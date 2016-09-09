@@ -22,8 +22,7 @@
         </div>
     </div>
     <div id="footer-zone" data-options="region:'south',split:false,collapsible:false">
-        <div id="footer">&copy;<%=new SimpleDateFormat("yyyy").format(new Date()) %>&nbsp;cFrost&nbsp;<a id="icp"
-                href="http://www.miitbeian.gov.cn" target="_Blank">粤ICP备15054669号</a></div>
+        <div id="footer">Powered&nbsp;by&nbsp;EulerForm&nbsp;${eulerformVersion}&nbsp;&copy;<%=new SimpleDateFormat("yyyy").format(new Date()) %>&nbsp;cFrost&nbsp;<a id="icp" href="http://www.miitbeian.gov.cn" target="_Blank">粤ICP备15054669号</a></div>
     </div>
     <div id="menu-zone" data-options="region:'west',title:'${euler:i18n('global.menu')}',split:false">
         <div id="sys-menu" class="easyui-accordion" style="width:100%;height:100%;border:0">

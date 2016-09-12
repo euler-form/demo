@@ -70,6 +70,8 @@
                 <tr>
                     <th data-options="field:'id',hidden:true">ID</th>
                     <th data-options="field:'username',align:'center',width:'120px'">${euler:i18n('user.username')}</th>
+                    <th data-options="field:'email',align:'center',width:'120px'">${euler:i18n('user.email')}</th>
+                    <th data-options="field:'mobile',align:'center',width:'120px'">${euler:i18n('user.mobile')}</th>
                     <th data-options="field:'fullName',align:'center',width:'120px'">${euler:i18n('user.fullName')}</th>
                     <th data-options="field:'enabled',align:'center',width:'100px',formatter:yesOrNoFormatter">${euler:i18n('user.enabled')}</th>
                     <th data-options="field:'accountNonExpired',align:'center',width:'100px',formatter:yesOrNoFormatter">${euler:i18n('user.accountNonExpired')}</th>
@@ -91,6 +93,8 @@
                 <div class="dlg-body">
                 <input type="hidden" id="dlg_id" name="id">
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.username')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_username" name="username"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.email')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_email" name="email"></span></div>
+                <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.mobile')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="" id="dlg_mobile" name="mobile"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.fullName')}</label></span><span class="dlg-input-span"><input class="easyui-textbox dlg-input" data-options="required:true" id="dlg_fullName" name="fullName"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.enabled')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_enabled" name="enabled"></span></div>
                 <div class="dlg-line"><span class="dlg-label-span"><label class="dlg-label">${euler:i18n('user.accountNonExpired')}</label></span><span class="dlg-input-span"><input class="easyui-combobox dlg-input" data-options="panelHeight:'auto',panelMaxHeight:'200px',required:true" id="dlg_accountNonExpired" name="accountNonExpired"></span></div>
@@ -215,9 +219,13 @@
             if(row == null || row.length < 1){
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
-                $('#dlg_id').val(row[0].id);
-                $('#dlg_username').textbox('setValue', row[0].username);
-                $('#dlg_fullName').textbox('setValue', row[0].fullName);
+                $('#fm').form('load', row[0]);
+                
+                $('#dlg_enabled').combobox('clear');
+                $('#dlg_accountNonExpired').combobox('clear');
+                $('#dlg_accountNonLocked').combobox('clear');
+                $('#dlg_credentialsNonExpired').combobox('clear');
+                
                 $('#dlg_enabled').combobox('select', row[0].enabled+"");
                 $('#dlg_accountNonExpired').combobox('select', row[0].accountNonExpired+"");
                 $('#dlg_accountNonLocked').combobox('select', row[0].accountNonLocked+"");

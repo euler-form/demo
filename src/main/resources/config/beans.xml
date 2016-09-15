@@ -12,19 +12,6 @@
            http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-           
-    <bean id="hotProjectDao" class="net.eulerform.web.module.lh.dao.impl.HotProjectDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-    <bean id="slideshowDao" class="net.eulerform.web.module.lh.dao.impl.SlideshowDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-    <bean id="positionDao" class="net.eulerform.web.module.lh.dao.impl.PositionDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-        <property name="partnerService" ref="partnerService"/>
-    </bean>
-    
-    
     
     <bean id="userService" name="userDetailsService" class="net.eulerform.web.module.authentication.service.impl.UserService">
         <property name="passwordEncoder" ref="passwordEncoder"/>       

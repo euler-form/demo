@@ -145,7 +145,7 @@ function getUrlParam(name) {
     if (r != null) return unescape(r[2]); return null; 
 }
 
-function unixDateFormatter(value, row, index) {
+function unixDatetimeFormatter(value, row, index) {
     return new Date(value).Format('yyyy-MM-dd hh:mm:ss');
 }
 

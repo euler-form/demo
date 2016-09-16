@@ -82,7 +82,7 @@
                     <th data-options="field:'description',align:'center',width:'160px'">${euler:i18n('codeTable.description')}</th>
                     <%-- <th data-options="field:'createByName',align:'center'">${euler:i18n('createPerson')}</th>
                     <th data-options="field:'modifyByName',align:'center'">${euler:i18n('lastModifyPerson')}</th>
-                    <th data-options="field:'modifyDate',align:'center',formatter:unixDateFormatter">${euler:i18n('lastModifyDate')}</th> --%>
+                    <th data-options="field:'modifyDate',align:'center',formatter:unixDatetimeFormatter">${euler:i18n('lastModifyDate')}</th> --%>
                 </tr>
             </thead>
         </table>

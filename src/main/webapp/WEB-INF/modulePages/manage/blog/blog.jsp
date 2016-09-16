@@ -86,7 +86,7 @@
                     <th data-options="field:'ck', checkbox:true"></th>
                     <th data-options="field:'title',align:'center',width:'500px'">${euler:i18n('blog.title')}</th>
                     <th data-options="field:'author',align:'center',width:'80px'">${euler:i18n('blog.author')}</th>
-                    <th data-options="field:'pubDate',align:'center',width:'130px',formatter:unixDateFormatter">${euler:i18n('blog.pubDate')}</th>
+                    <th data-options="field:'pubDate',align:'center',width:'130px',formatter:unixDatetimeFormatter">${euler:i18n('blog.pubDate')}</th>
                     <th data-options="field:'top',align:'center',width:'60px',formatter:yesOrNoFormatter">${euler:i18n('blog.top')}</th>
                     <th data-options="field:'id',align:'center',width:'130px',formatter:blogPriviewFormatter">${euler:i18n('global.operate')}</th>
                 </tr>
@@ -259,7 +259,7 @@
         
         function onAdd() {
             $('#fm').form('clear');
-            $('#dlg_pubDateStr').datetimebox('setValue', unixDateFormatter((new Date()).getTime()));
+            $('#dlg_pubDateStr').datetimebox('setValue', unixDatetimeFormatter((new Date()).getTime()));
             $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.blog.addBlog')}");
         }
         
@@ -271,7 +271,7 @@
                 $.messager.alert("${euler:i18n('global.remind')}", "${euler:i18n('global.pleaseSelectRowsToEdit')}");
             } else if(row){
                 $('#fm').form('load', row[0]);
-                $('#dlg_pubDateStr').datetimebox('setValue', unixDateFormatter(row[0].pubDate));
+                $('#dlg_pubDateStr').datetimebox('setValue', unixDatetimeFormatter(row[0].pubDate));
                 setImgSrc('#dlg_img-show', 356, 149, upload + row[0].imageFileName);
                 UE.getEditor('editor').setContent(row[0].text);
                 $('#dlg').dialog('open').dialog('setTitle', "${euler:i18n('jsp.blog.editBlog')}");
